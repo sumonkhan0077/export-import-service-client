@@ -1,4 +1,4 @@
-import React from "react";
+import React, { use, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -11,8 +11,31 @@ import truck from "../../assets/pexels-alban-mehmeti-184979123-13682891.jpg";
 import img1 from "../../assets/undraw_business-deal_nx2n.svg";
 import img2 from "../../assets/undraw_location-tracking_q3yd.svg";
 import img3 from "../../assets/undraw_on-the-way_zwi3.svg";
+import LatesProducts from "../../Components/LatestProducts/LatesProducts";
+import Spinner from "../../Components/Spinner/Spinner";
+import { MdNavigateNext } from "react-icons/md";
+import { Link } from "react-router";
+
 
 const Home = () => {
+  const [latestProducts, setLatestProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/latest-products")
+      .then((res) => res.json())
+      .then((data) => {
+        setLatestProducts(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+      });
+  }, []);
+
+  // console.log(latestProducts);
+
   return (
     <div className="relative ">
       <div className="w-full max-w-8xl mx-auto mt-6">
@@ -94,11 +117,12 @@ const Home = () => {
       </div>
 
       <div className="flex flex-col justify-center items-center bg-gradient-to-b from-[#6a64dd] to-[#3c9dda] mt-55">
-
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320 " className="fill-white dark:fill-[#1d232a] transition-colors duration-500">
-          <path
-            d="M0,224L120,224C240,224,480,224,720,213.3C960,203,1200,181,1320,170.7L1440,160L1440,0L1320,0C1200,0,960,0,720,0C480,0,240,0,120,0L0,0Z"
-          ></path>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 320 "
+          className="fill-white dark:fill-[#1d232a] transition-colors duration-500"
+        >
+          <path d="M0,224L120,224C240,224,480,224,720,213.3C960,203,1200,181,1320,170.7L1440,160L1440,0L1320,0C1200,0,960,0,720,0C480,0,240,0,120,0L0,0Z"></path>
         </svg>
 
         <div className="text-center mb-10 mt-20  px-4 sm:px-6 md:px-10">
@@ -120,7 +144,7 @@ const Home = () => {
 
         <div>
           <div>
-            <div className=" max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 mt-6">
+            <div className=" max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 mt-6">
               <div className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center hover:shadow-xl transition">
                 <img
                   src={img1}
@@ -156,15 +180,40 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="fill-white dark:fill-[#1d232a] transition-colors duration-500">
-          <path
-            d="M0,224L120,224C240,224,480,224,720,213.3C960,203,1200,181,1320,170.7L1440,160L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"
-          ></path>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 320"
+          className="fill-white dark:fill-[#1d232a] transition-colors duration-500"
+        >
+          <path d="M0,224L120,224C240,224,480,224,720,213.3C960,203,1200,181,1320,170.7L1440,160L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path>
         </svg>
       </div>
 
+      {/* product by latest */}
       <div>
-       
+         <h1 className="text-center text-4xl font-bold mt-5 mb-10">
+          Latest Products
+        </h1>
+
+        <div className="max-w-[1100px] mx-auto grid grid-cols-1  md:grid-cols-2  lg:grid-cols-3 gap-6 mb-8">
+          {loading ? 
+          (<Spinner></Spinner>) :
+       ( latestProducts.map((latestProduct) => (
+            <LatesProducts
+              key={latestProduct._id}
+              latestProduct={latestProduct}
+            ></LatesProducts>)
+          ))}
+           <div className="flex justify-center mx-auto items-center">
+          <Link to='/all_products' className="hover:scale-105 transition ease-in-out btn bg-[#6c64ff] text-[#ffff] py-5 px-6 mt-2 mr-25 lg:ml-125 flex items-center">
+            {" "}
+            <span className="text-2xl text-[#ffff]">
+              <MdNavigateNext />
+            </span>{" "}
+            <p>See All</p>
+          </Link>
+        </div>
+        </div>
       </div>
     </div>
   );

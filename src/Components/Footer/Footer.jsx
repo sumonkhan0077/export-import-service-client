@@ -1,11 +1,11 @@
 import React from "react";
+import wave1 from '../../assets/wave_haikei.svg'
+
 
 const Footer = () => {
   return (
     <div>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#7b76e3" fill-opacity="1" d="M0,64L120,53.3C240,43,480,21,720,21.3C960,21,1200,43,1320,53.3L1440,64L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path></svg>
-      <footer className="footer sm:footer-horizontal bg-base-200 text-base-content p-10 bg-gradient-to-b ">
-         
+      <footer className=" footer sm:footer-horizontal text-base-content pt-20 p-10 bg-gradient-to-b from-[#6a64dd] to-[#3c9dda]"  >
         <aside>
           <h1 className="text-3xl">EXprot import <br /> zone</h1>
           <p className="text-white">
@@ -36,7 +36,7 @@ const Footer = () => {
         </nav>
       
       </footer>
-      
+       
     </div>
   );
 };

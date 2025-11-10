@@ -3,7 +3,8 @@ import Home from '../Pages/Home.jsx/Home';
 import { Outlet } from 'react-router';
 import Navbar from '../Components/Navbar/Navbar';
 import { ToastContainer } from 'react-toastify';
-import Footer from '../Components/Navbar/Footer/Footer';
+import Footer from '../Components/Footer/Footer';
+
 
 const MainLayout = () => {
     return (
