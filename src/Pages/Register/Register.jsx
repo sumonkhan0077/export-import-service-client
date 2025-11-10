@@ -22,6 +22,7 @@ const Register = () => {
     } else {
       setNameError("");
     }
+    const userName = e.target.name.value;
     const photo = e.target.photo.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
@@ -60,6 +61,24 @@ const Register = () => {
         //  console.log(result.user)
         setUser(result.user);
          navigate(`${location.state ? location.state : "/"}`);
+          const newUser = {
+          name: userName,
+          image:photo,
+          email: email,
+          password:password
+           
+        }
+        fetch('http://localhost:3000/users' , {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json'
+          },
+          body: JSON.stringify(newUser)
+        })
+        .then(res => res.json())
+        .then(data => {
+          console.log('after userr save', data)
+        })
       })
       .catch((error) => {
         // console.log(error);
@@ -72,6 +91,25 @@ const Register = () => {
         // console.log(result.user);
         setUser(result.user);
         navigate(`${location.state ? location.state : "/"}`);
+
+        const newUser = {
+          name: result.user.displayName,
+          email: result.user.email,
+          image: result.user.photoURL,
+          password: 'google login'
+        }
+        fetch('http://localhost:3000/users' , {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json'
+          },
+          body: JSON.stringify(newUser)
+        })
+        .then(res => res.json())
+        .then(data => {
+          console.log('after userr save', data)
+        })
+
       })
       .catch((error) => {
         
