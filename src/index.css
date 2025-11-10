@@ -2,12 +2,19 @@
 @plugin "daisyui";
 @tailwind utilities;
 
+@plugin "daisyui" {
+  themes: light --default, dark --prefersdark;
+}
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
   --color-primary:  #665eff;
   --color-secondary: teal;
 }
+
 
 li a.active{
   @apply underline decoration-[#665eff]
@@ -20,5 +27,5 @@ li a.active{
   background-color: #ffffff;
   color: #665eff;
    transform: scale(1.05);
-   transition: all 0.3s ease;
+   transition: all 0.5s ease;
 }

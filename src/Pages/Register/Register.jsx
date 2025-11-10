@@ -2,6 +2,7 @@ import React, { use, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../../Context/AuthProvider";
 import { Link, useNavigate } from "react-router";
+import { toast } from "react-toastify";
 
 const Register = () => {
 
@@ -60,6 +61,7 @@ const Register = () => {
       .then((result) => {
         //  console.log(result.user)
         setUser(result.user);
+         toast.success(" User Create Account successful");
          navigate(`${location.state ? location.state : "/"}`);
           const newUser = {
           name: userName,
@@ -91,6 +93,7 @@ const Register = () => {
         // console.log(result.user);
         setUser(result.user);
         navigate(`${location.state ? location.state : "/"}`);
+        toast.success(" User login successfully");
 
         const newUser = {
           name: result.user.displayName,

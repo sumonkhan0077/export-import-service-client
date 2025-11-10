@@ -2,6 +2,7 @@ import React, { use, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../Context/AuthProvider";
+import { toast } from "react-toastify";
 
 const Login = () => {
 
@@ -24,12 +25,14 @@ const Login = () => {
         // console.log(result.user);
         e.target.reset();
         navigate(`${location.state ? location.state : "/"}`);
+        toast.success(" User login successfully");
       })
       .catch((error) => {
         const errorcode = error.code;
         // const errormessage = error.message
         // alert(errorcode, errormessage)
         setError(errorcode);
+        toast.error("Something went wrong");
       });
   };
 
@@ -39,6 +42,7 @@ const Login = () => {
         // console.log(result.user);
         setUser(result.user);
         navigate(`${location.state ? location.state : "/"}`);
+        toast.success(" User login successfully");
       })
       .catch((error) => {
         setError(error.code);

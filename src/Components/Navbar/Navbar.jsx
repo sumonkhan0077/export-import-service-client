@@ -11,8 +11,8 @@ const Navbar = () => {
     const handelLogOut = () => {
       logOut()
         .then(() => {
-              toast.success("🔒 User logged out successfully");
-             console.log('log out')
+            toast.success("🔒 User logged out successfully");
+            //  console.log('log out')
         })
         .catch((error) => {
           // console.log(error);
@@ -41,7 +41,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar bg-base-100 shadow-sm p-4">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
