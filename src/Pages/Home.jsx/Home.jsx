@@ -205,7 +205,7 @@ const Home = () => {
             ></LatesProducts>)
           ))}
            <div className="flex justify-center mx-auto items-center">
-          <Link to='/all_products' className="hover:scale-105 transition ease-in-out btn bg-[#6c64ff] text-[#ffff] py-5 px-6 mt-2 mr-25 lg:ml-125 flex items-center">
+          <Link to='/all_products' className="hover:scale-105 transition ease-in-out btn my-btn py-5 px-6 mt-2 mr-25 lg:ml-125 flex items-center">
             {" "}
             <span className="text-2xl text-[#ffff]">
               <MdNavigateNext />

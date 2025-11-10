@@ -5,11 +5,13 @@ import AllProducts from "../Pages/AllProducts/AllProducts";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import ProductsDetails from "../Pages/ProductsDetails/ProductsDetails";
+import ErrorElemet from "../Pages/ErrorElement/ErrorElemet";
 
 
 const router = createBrowserRouter([
     {
      path:'/',
+     errorElement:<ErrorElemet></ErrorElemet>,
      element:<MainLayout></MainLayout>,
      children: [
         {
@@ -21,7 +23,8 @@ const router = createBrowserRouter([
             element: <AllProducts></AllProducts>
         },
         {
-            path:'/product_details' ,
+            path:'/product_details/:id' ,
+            loader:({params} ) => fetch(`http://localhost:3000/products/${params.id}`),
             element: <ProductsDetails></ProductsDetails>
         },
         {
