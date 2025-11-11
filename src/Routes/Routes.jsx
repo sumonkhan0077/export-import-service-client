@@ -6,6 +6,7 @@ import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import ProductsDetails from "../Pages/ProductsDetails/ProductsDetails";
 import ErrorElemet from "../Pages/ErrorElement/ErrorElemet";
+import MyImport from "../Pages/MyImport/MyImport";
 
 
 const router = createBrowserRouter([
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
         {
             path:'/all_products',
             element: <AllProducts></AllProducts>
+        },
+        {
+            path:'/my_import',
+            element: <MyImport></MyImport>
         },
         {
             path:'/product_details/:id' ,

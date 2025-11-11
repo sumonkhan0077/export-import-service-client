@@ -1,9 +1,10 @@
 import React, { use, useRef } from "react";
 import { useLoaderData } from "react-router";
 import { AuthContext } from "../../Context/AuthProvider";
+import Swal from "sweetalert2";
 
 const ProductsDetails = () => {
-    const {user} =use(AuthContext)
+  const { user } = use(AuthContext);
   const product = useLoaderData();
   console.log(product);
 
@@ -13,15 +14,46 @@ const ProductsDetails = () => {
     importModal.current.showModal();
   };
 
-  const handelImport =(e) => {
+  const handelImport = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
     const email = e.target.email.value;
     const quantity = e.target.quantity.value;
-    console.log(name , email , quantity , product._id)
+    console.log(name, email, quantity, product._id);
+    const newImport = {
+      product_name: product.product_name,
+      product_image:product.product_image,
+      price:product.price,
+      origin_country:product.origin_country,
+      rating: product.rating,
+      
+      buyer_name: name,
+      buyer_email: email,
+      quantity: quantity,
+    };
 
-    
-  }
+    fetch("http://localhost:3000/myImport", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newImport),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("after import products", data);
+        if (data.insertedId) {
+          importModal.current.close();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your work has been saved",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
   return (
     <div>
       <div className="max-w-[1100px] mx-auto hero bg-base-200 ">
@@ -61,8 +93,8 @@ const ProductsDetails = () => {
                         name="name"
                         className="input"
                         placeholder="Name"
-                         defaultValue={user.displayName}
-                        readOnly
+                        defaultValue={user ? user.displayName : ""}
+                        required
                       />
                       <label className="label">Email</label>
                       <input
@@ -70,8 +102,9 @@ const ProductsDetails = () => {
                         name="email"
                         className="input"
                         placeholder="Email"
-                        defaultValue={user.email}
+                        defaultValue={user?.email}
                         readOnly
+                        required
                       />
                       <label className="label">quantity</label>
                       <input
@@ -79,9 +112,9 @@ const ProductsDetails = () => {
                         name="quantity"
                         className="input"
                         placeholder="999"
+                        required
                       />
-                    
-                
+
                       <button className="btn btn-neutral mt-4">Login</button>
                     </fieldset>
                   </form>
