@@ -1,16 +1,35 @@
-import React, { use, useRef } from "react";
+import React, { use, useEffect, useRef, useState, } from "react";
 import { useLoaderData, useNavigate } from "react-router";
 import { AuthContext } from "../../Context/AuthProvider";
 import Swal from "sweetalert2";
 import { TiArrowBack } from "react-icons/ti";
+import AppNotFound from "../../Components/AppNotFound/AppNotFound";
+import Spinner from "../../Components/Spinner/Spinner";
+
 
 const ProductsDetails = () => {
   const { user } = use(AuthContext);
   const product = useLoaderData();
   const navigate = useNavigate();
-  console.log(product);
-
   const importModal = useRef(null);
+   const [loading, setLoading] = useState(true);
+
+  // console.log(product);
+    useEffect(() => {
+    if (product) {
+       setLoading(false); // half second delay for nice UX
+    }
+  }, [product]);
+
+  // ✅ যদি invalid ID দেওয়া হয় (product না পাওয়া যায়)
+  if (!product || !product._id) {
+    return <AppNotFound />;
+  }
+
+    if (loading) {
+    return <Spinner></Spinner>
+     ;
+  }
 
   const handelModal = () => {
     importModal.current.showModal();

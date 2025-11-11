@@ -6,7 +6,7 @@ import { Link } from "react-router";
 const AppNotFound = () => {
     return (
         <div>
-              <title>404-error</title>
+              <title>App-not-found</title>
               <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-b from-[#ece9ff] to-[#ffffff]">
              
                 <motion.h1
@@ -15,7 +15,7 @@ const AppNotFound = () => {
                   transition={{ duration: 0.8 }}
                   className="text-9xl font-extrabold text-[#3f00a4] drop-shadow-lg"
                 >
-                  404
+                  APP NOT FOUND
                 </motion.h1>
         
             

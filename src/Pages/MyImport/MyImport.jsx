@@ -2,15 +2,18 @@ import React, { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
 import Swal from "sweetalert2";
 import Spinner from "../../Components/Spinner/Spinner";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { TiArrowBack } from "react-icons/ti";
 
 const MyImport = () => {
   const { user } = useContext(AuthContext);
   const [myImports, setMyImports] = useState([]);
   const [loading, setLoading] = useState(true);
 
+
   useEffect(() => {
     if (user?.email) {
+      setLoading(true);
       fetch(`http://localhost:3000/myImport?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => setMyImports(data));
@@ -51,6 +54,9 @@ const MyImport = () => {
       }
     });
   };
+  if (loading) {
+    return <Spinner></Spinner>;
+  }
 
   return (
     <div className="max-w-[1100px] mx-auto  mt-20 mb-20  p-4">
@@ -89,10 +95,7 @@ const MyImport = () => {
                       <div className="flex items-center gap-3">
                         <div className="avatar">
                           <div className="mask mask-squircle h-12 w-12">
-                            <img
-                              src={item.product_image}
-                              alt="product"
-                            />
+                            <img src={item.product_image} alt="product" />
                           </div>
                         </div>
                         <div>
@@ -107,7 +110,10 @@ const MyImport = () => {
                     <td>{item.quantity}</td>
                     <td className="text-primary">${item.price}</td>
                     <td className=" items-center">
-                      <Link to={`/product_details/${item._id}`} className="btn my-btn btn-xs mr-2">
+                      <Link
+                        to={`/product_details/${item._id}`}
+                        className="btn my-btn btn-xs mr-2"
+                      >
                         Details
                       </Link>
                       <button
@@ -123,8 +129,17 @@ const MyImport = () => {
             </tbody>
           </table>
         ) : (
-          <div className="p-4 text-center text-gray-500">
-            No products found.
+          <div className="p-4 h-[30vh]  text-center text-gray-500">
+            <h1> No products found.</h1>
+            <Link
+              to='/all_products'
+              className="btn my-btn mt-5 px-8 "
+            >
+              <span>
+                <TiArrowBack className="text-xl" />
+              </span>
+              <span> Back to Import Products</span>
+            </Link>
           </div>
         )}
       </div>

@@ -14,6 +14,7 @@ const MyProducts = () => {
 
   useEffect(() => {
     if (user?.email) {
+      setLoading(true)
       fetch(`http://localhost:3000/products?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => setMyProductsAll(data));
@@ -54,6 +55,9 @@ const MyProducts = () => {
         }
       });
     };
+      if (loading) {
+    return <Spinner></Spinner>;
+  }
 
   return (
     <div className="max-w-[1100px] mx-auto mt-30">
