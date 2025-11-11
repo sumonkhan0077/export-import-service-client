@@ -9,12 +9,13 @@ import ErrorElemet from "../Pages/ErrorElement/ErrorElemet";
 import MyImport from "../Pages/MyImport/MyImport";
 import MyProducts from "../Pages/Myproducts/Myproducts";
 import PrivetRoute from "../Context/PrivetRoute";
+import ErrorElement from "../Pages/ErrorElement/ErrorElemet";
 
 
 const router = createBrowserRouter([
     {
      path:'/',
-     errorElement:<ErrorElemet></ErrorElemet>,
+     errorElement:<ErrorElement></ErrorElement>,
      element:<MainLayout></MainLayout>,
      children: [
         {

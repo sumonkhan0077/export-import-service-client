@@ -56,7 +56,8 @@ const MyProducts = () => {
     };
 
   return (
-    <div className="max-w-[1100px] mx-auto mt-20">
+    <div className="max-w-[1100px] mx-auto mt-30">
+      <h2></h2>
       <div className="flex justify-between mt-4">
         <h1 className="text-2xl font-semibold mb-4">My Products</h1>
         <div>
@@ -64,7 +65,7 @@ const MyProducts = () => {
         </div>
       </div>
 
-      <div className="overflow-x-auto bg-white shadow-md rounded-lg mt-10 mb-10">
+      <div className="overflow-x-auto bg-white shadow-md rounded-lg mt-5 mb-10">
         {myProductsAll.length > 0 ? (
           <table className="table w-full">
             {/* Table Head */}
