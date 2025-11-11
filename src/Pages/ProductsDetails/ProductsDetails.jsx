@@ -22,11 +22,11 @@ const ProductsDetails = () => {
     console.log(name, email, quantity, product._id);
     const newImport = {
       product_name: product.product_name,
-      product_image:product.product_image,
-      price:product.price,
-      origin_country:product.origin_country,
+      product_image: product.product_image,
+      price: product.price,
+      origin_country: product.origin_country,
       rating: product.rating,
-      
+
       buyer_name: name,
       buyer_email: email,
       quantity: quantity,
@@ -59,16 +59,34 @@ const ProductsDetails = () => {
       <div className="max-w-[1100px] mx-auto hero bg-base-200 ">
         <div className="hero-content flex-col lg:flex-row">
           <img
-            src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
-            className="max-w-sm rounded-lg shadow-2xl"
+            src={product.product_image}
           />
           <div>
-            <h1 className="text-5xl font-bold">Box Office News!</h1>
-            <p className="py-6">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
-            </p>
+            <h1 className="text-5xl font-bold">{product.product_name}</h1>
+            <p className="py-6">{product.description}</p>
+
+            <div className="mb-3 ">
+              <h1 className="text-xl font-medium text-[#6c64ff]">
+                Price: ${product.price}
+              </h1>
+              <h1>Exporter Name: {product.exporter_name}</h1>
+
+            </div>
+            <div className="flex  gap-3 mb-2">
+              <div className="badge  bg-[#665eff58] text-[#6c64ff]">
+                {product.origin_country}
+              </div>
+              <div className="badge bg-[#665eff58] text-[#6c64ff]">
+                Available: {product.available_quantity}
+              </div>
+              <div className="badge bg-[#665eff58] text-[#6c64ff]  ">
+                {" "}
+                Rating: {product.rating} 
+              </div>
+            </div>
+              <h1 className="mb-4">
+                 Rating Number: {product.rating_number}
+              </h1>
             <div>
               <button onClick={handelModal} className="btn btn-primary">
                 Import Now
@@ -115,13 +133,13 @@ const ProductsDetails = () => {
                         required
                       />
 
-                      <button className="btn btn-neutral mt-4">Login</button>
+                      <button className="btn my-btn mt-4">Import Product</button>
                     </fieldset>
                   </form>
                   <div className="modal-action">
                     <form method="dialog">
                       {/* if there is a button in form, it will close the modal */}
-                      <button className="btn">Close</button>
+                      <button className="btn text-white bg-secondary ">Close</button>
                     </form>
                   </div>
                 </div>

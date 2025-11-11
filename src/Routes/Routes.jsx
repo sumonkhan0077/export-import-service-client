@@ -7,6 +7,7 @@ import Register from "../Pages/Register/Register";
 import ProductsDetails from "../Pages/ProductsDetails/ProductsDetails";
 import ErrorElemet from "../Pages/ErrorElement/ErrorElemet";
 import MyImport from "../Pages/MyImport/MyImport";
+import MyProducts from "../Pages/Myproducts/Myproducts";
 
 
 const router = createBrowserRouter([
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
         {
             path:'/my_import',
             element: <MyImport></MyImport>
+        },
+        {
+            path:'/my_products',
+            element: <MyProducts></MyProducts>
         },
         {
             path:'/product_details/:id' ,

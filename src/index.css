@@ -12,13 +12,14 @@
   name: "light";
   default: true;
   --color-primary:  #665eff;
-  --color-secondary: teal;
+  --color-secondary: red;
 }
 
 
 li a.active{
   @apply underline decoration-[#665eff]
 }
+
  .my-btn {
   background-color: #665eff;
  color: #ffffff;

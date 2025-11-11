@@ -3,7 +3,7 @@ import { Link } from "react-router";
 
 const LatesProducts = ({ latestProduct }) => {
   const { _id, product_name ,product_image , rating ,price,origin_country, available_quantity } = latestProduct;
-  console.log(product_name , latestProduct);
+  // console.log(product_name , latestProduct);
   return (
     <div>
       <div className="mt-7 card bg-base-100 w-85 mx-auto shadow-sm transition-transform duration-300 transform hover:scale-105">
