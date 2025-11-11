@@ -1,5 +1,6 @@
 import React, { use, useRef } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
+import { toast } from "react-toastify";
 
 const UpdateProduct = ({item}) => {
     console.log(item)
@@ -11,10 +12,10 @@ const UpdateProduct = ({item}) => {
     importModal.current.showModal();
   };
 
-   const handleSubmit = (e) => {
+   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData(formRef.current);
 
+    const formData = new FormData(formRef.current);
     const updatedProduct = {
       product_image: formData.get("product_image"),
       product_name: formData.get("product_name"),
@@ -27,13 +28,22 @@ const UpdateProduct = ({item}) => {
       exporter_email: user?.email || "",
     };
 
-    console.log("Updated Product:", updatedProduct);
+    try {
+      const res = await fetch(`http://localhost:3000/products/${item._id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedProduct),
+      });
+      const data = await res.json();
+      toast.success('Updated your data')
+    //   console.log("Update response:", data);
 
-    // এখানে fetch দিয়ে backend update করতে পারো
-    // fetch(`http://localhost:3000/products/${item._id}`, { method: "PATCH", body: JSON.stringify(updatedProduct), headers: { "Content-Type": "application/json" } })
-
-    importModal.current.close(); // modal close
-    formRef.current.reset(); // form reset
+      importModal.current.close();
+      formRef.current.reset();
+ 
+    } catch (error) {
+      console.error("Update error:", error);
+    }
   };
   
   return (

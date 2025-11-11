@@ -53,7 +53,7 @@ const MyImport = () => {
   };
 
   return (
-    <div className="max-w-[1100px] mx-auto mt-10 mb-20  p-4">
+    <div className="max-w-[1100px] mx-auto  mt-20 mb-20  p-4">
       <h1 className="text-2xl font-semibold mb-4">
         My Imported Products ({myImports.length})
       </h1>
@@ -90,7 +90,7 @@ const MyImport = () => {
                         <div className="avatar">
                           <div className="mask mask-squircle h-12 w-12">
                             <img
-                              src="https://img.daisyui.com/images/profile/demo/2@94.webp"
+                              src={item.product_image}
                               alt="product"
                             />
                           </div>

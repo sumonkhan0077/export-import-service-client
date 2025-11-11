@@ -3,22 +3,22 @@ import { Link, NavLink } from "react-router";
 import { AuthContext } from "../../Context/AuthProvider";
 import { toast } from "react-toastify";
 import { TbLogin2, TbLogout } from "react-icons/tb";
+import { MdAccountCircle } from "react-icons/md";
 
 const Navbar = () => {
+  const { user, logOut } = use(AuthContext);
 
-   const { user, logOut } = use(AuthContext);
-  
-    const handelLogOut = () => {
-      logOut()
-        .then(() => {
-            toast.success("🔒 User logged out successfully");
-            //  console.log('log out')
-        })
-        .catch((error) => {
-          // console.log(error);
-          toast.error("Something went wrong while logging out");
-        });
-    };
+  const handelLogOut = () => {
+    logOut()
+      .then(() => {
+        toast.success("🔒 User logged out successfully");
+        //  console.log('log out')
+      })
+      .catch((error) => {
+        // console.log(error);
+        toast.error("Something went wrong while logging out");
+      });
+  };
   const items = (
     <>
       <li>
@@ -31,25 +31,25 @@ const Navbar = () => {
       </li>
       <li>
         {" "}
-        <NavLink to="/my_import">my import</NavLink>
+        <NavLink to="/my_import">My Import</NavLink>
       </li>
       <li>
         {" "}
-        <NavLink to="/my_products">my product</NavLink>
+        <NavLink to="/my_products">My Product</NavLink>
+      </li>
+      {/* <li>
+        {" "}
+        <NavLink to="/login">Logins</NavLink>
       </li>
       <li>
         {" "}
-        <NavLink to="/login">logins</NavLink>
-      </li>
-      <li>
-        {" "}
-        <NavLink to="/register">register</NavLink>
-      </li>
+        <NavLink to="/register">Register</NavLink>
+      </li> */}
     </>
   );
 
   return (
-    <div className="navbar bg-base-100 shadow-sm p-4">
+    <div className="navbar fixed top-0 left-0 w-full bg-white/30 backdrop-blur-md z-50 shadow-none pl-10 pr-10 p-4">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -76,24 +76,35 @@ const Navbar = () => {
             {items}
           </ul>
         </div>
-        <Link to='/'>Export Import Zone</Link>
+        <Link to="/">Export Import Zone</Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="gap-3 menu-horizontal px-1">
-          {items}
-        </ul>
+        <ul className="gap-3 menu-horizontal px-1">{items}</ul>
       </div>
-      <div className="navbar-end">
-          {user ? (
-            <button onClick={handelLogOut} className="btn my-btn">
-              Logout
-              <TbLogout className="text-2xl"/>
-            </button>
-          ) : (
-            <Link to="/login">
-              <p className="btn my-btn"><TbLogin2 className="text-2xl"/> Login</p>
-            </Link>
-          )}
+      <div className="navbar-end gap-3">
+        <Link to="/">
+            {user && user.photoURL ? (
+              <img
+                src={user.photoURL}
+                alt="User"
+                className="w-10 h-10 rounded-full object-cover border-2 border-blue-500"
+              />
+            ) : (
+              <MdAccountCircle className="text-4xl text-gray-600" />
+            )}
+          </Link>
+        {user ? (
+          <button onClick={handelLogOut} className="btn my-btn">
+            Logout
+            <TbLogout className="text-2xl" />
+          </button>
+        ) : (
+          <Link to="/login">
+            <p className="btn my-btn">
+              <TbLogin2 className="text-2xl" /> Login
+            </p>
+          </Link>
+        )}
       </div>
     </div>
   );

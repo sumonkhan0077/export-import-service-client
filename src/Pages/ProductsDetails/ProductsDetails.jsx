@@ -1,11 +1,13 @@
 import React, { use, useRef } from "react";
-import { useLoaderData } from "react-router";
+import { useLoaderData, useNavigate } from "react-router";
 import { AuthContext } from "../../Context/AuthProvider";
 import Swal from "sweetalert2";
+import { TiArrowBack } from "react-icons/ti";
 
 const ProductsDetails = () => {
   const { user } = use(AuthContext);
   const product = useLoaderData();
+  const navigate = useNavigate();
   console.log(product);
 
   const importModal = useRef(null);
@@ -55,12 +57,10 @@ const ProductsDetails = () => {
       });
   };
   return (
-    <div>
-      <div className="max-w-[1100px] mx-auto hero bg-base-200 ">
+    <div className="max-w-[1100px] mx-auto">
+      <div className="max-w-[1100px] mx-auto hero bg-base-200 mt-20 ">
         <div className="hero-content flex-col lg:flex-row">
-          <img
-            src={product.product_image}
-          />
+          <img src={product.product_image} />
           <div>
             <h1 className="text-5xl font-bold">{product.product_name}</h1>
             <p className="py-6">{product.description}</p>
@@ -70,7 +70,6 @@ const ProductsDetails = () => {
                 Price: ${product.price}
               </h1>
               <h1>Exporter Name: {product.exporter_name}</h1>
-
             </div>
             <div className="flex  gap-3 mb-2">
               <div className="badge  bg-[#665eff58] text-[#6c64ff]">
@@ -81,14 +80,12 @@ const ProductsDetails = () => {
               </div>
               <div className="badge bg-[#665eff58] text-[#6c64ff]  ">
                 {" "}
-                Rating: {product.rating} 
+                Rating: {product.rating}
               </div>
             </div>
-              <h1 className="mb-4">
-                 Rating Number: {product.rating_number}
-              </h1>
+            <h1 className="mb-4">Rating Number: {product.rating_number}</h1>
             <div>
-              <button onClick={handelModal} className="btn btn-primary">
+              <button onClick={handelModal} className="btn my-btn">
                 Import Now
               </button>
               {/* Open the modal using document.getElementById('ID').showModal() method */}
@@ -133,17 +130,30 @@ const ProductsDetails = () => {
                         required
                       />
 
-                      <button className="btn my-btn mt-4">Import Product</button>
+                      <button className="btn my-btn mt-4">
+                        Import Product
+                      </button>
                     </fieldset>
                   </form>
                   <div className="modal-action">
                     <form method="dialog">
                       {/* if there is a button in form, it will close the modal */}
-                      <button className="btn text-white bg-secondary ">Close</button>
+                      <button className="btn text-white bg-secondary ">
+                        Close
+                      </button>
                     </form>
                   </div>
                 </div>
               </dialog>
+              <button
+                onClick={() => navigate(-1)}
+                className="btn my-btn ml-4 px-8 "
+              >
+                <span>
+                  <TiArrowBack className="text-xl" />
+                </span>
+                <span> Back</span>
+              </button>
             </div>
           </div>
         </div>

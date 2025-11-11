@@ -37,7 +37,7 @@ const Home = () => {
   // console.log(latestProducts);
 
   return (
-    <div className="relative ">
+    <div className="relative mt-20 ">
       <div className="w-full max-w-8xl mx-auto mt-6">
         <Swiper
           pagination={{ dynamicBullets: true }}
@@ -130,7 +130,7 @@ const Home = () => {
             WHY CHOOSE US?
           </h2>
 
-          <p className="text-[#ffffffb9] text-base sm:text-lg md:text-xl mt-4 sm:mt-5 leading-relaxed">
+          <p className="text-[#ffffffb9] max-w-[1050px] mx-auto text-base sm:text-lg md:text-xl mt-4 sm:mt-5 leading-relaxed">
             We simplify global trade for everyone. From exporters to importers —
             manage your products, track shipments, and stay connected with
             verified global partners. Secure, fast, and designed to help your

@@ -23,10 +23,10 @@ const AllCards = ({product}) => {
           <div className=" ">
             <h1 className="text-xl font-medium text-[#6c64ff]">$ {price}</h1>
           </div>
-          <div className="flex  gap-3 ">
             <div className="badge  bg-[#665eff58] text-[#6c64ff]">
               {origin_country}
             </div>
+          <div className="flex  gap-3 ">
             <div className="badge bg-[#665eff58] text-[#6c64ff]">
               Available: {available_quantity}
             </div>

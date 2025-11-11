@@ -23,7 +23,7 @@ const AllProducts = () => {
     
     return (
         <div>
-            <div  className="max-w-[1100px] mx-auto grid grid-cols-1  md:grid-cols-2  lg:grid-cols-3 gap-6 mb-8">
+            <div  className="max-w-[1100px] mx-auto mt-20 grid grid-cols-1  md:grid-cols-2  lg:grid-cols-3 gap-6 mb-8">
             {loading? (<Spinner></Spinner>) :
               (  Products.map (product => 
 

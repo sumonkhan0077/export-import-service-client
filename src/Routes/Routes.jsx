@@ -8,6 +8,7 @@ import ProductsDetails from "../Pages/ProductsDetails/ProductsDetails";
 import ErrorElemet from "../Pages/ErrorElement/ErrorElemet";
 import MyImport from "../Pages/MyImport/MyImport";
 import MyProducts from "../Pages/Myproducts/Myproducts";
+import PrivetRoute from "../Context/PrivetRoute";
 
 
 const router = createBrowserRouter([
@@ -26,16 +27,22 @@ const router = createBrowserRouter([
         },
         {
             path:'/my_import',
-            element: <MyImport></MyImport>
+            element:<PrivetRoute>
+                <MyImport></MyImport>
+            </PrivetRoute>
         },
         {
             path:'/my_products',
-            element: <MyProducts></MyProducts>
+            element:<PrivetRoute>
+                  <MyProducts></MyProducts>
+            </PrivetRoute> 
         },
         {
             path:'/product_details/:id' ,
             loader:({params} ) => fetch(`http://localhost:3000/products/${params.id}`),
-            element: <ProductsDetails></ProductsDetails>
+            element: <PrivetRoute>
+                 <ProductsDetails></ProductsDetails>
+            </PrivetRoute>
         },
         {
             path:'/login',

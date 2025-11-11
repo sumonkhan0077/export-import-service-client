@@ -120,7 +120,7 @@ const Register = () => {
   };
   return (
     <div>
-      <div className="hero bg-base-200 min-h-screen">
+      <div className="hero bg-base-200 min-h-screen mt-20">
         <div className="hero-content flex-col ">
           <div className="text-center lg:text-left">
             <h1 className="text-5xl font-bold">Register now!</h1>
@@ -169,7 +169,7 @@ const Register = () => {
                   )}
                   <hr className="  my-2 border-0 h-[2px] bg-gradient-to-r from-transparent via-[#006affe1] to-transparent" />
                   <button type="submit" className="btn my-btn  mt-4">
-                    Login
+                    Register
                   </button>
 
                   <div className="flex justify-center items-center">

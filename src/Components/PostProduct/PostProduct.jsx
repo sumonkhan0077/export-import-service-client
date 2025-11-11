@@ -61,7 +61,7 @@ const PostProductModal = () => {
     <div className="text-center">
       {/* Open Modal Button */}
       <button
-        className="btn bg-blue-600 text-white hover:bg-blue-700"
+        className="btn bg-primary text-white hover:bg-blue-700"
         onClick={handelModal}
       >
         + Add Product
