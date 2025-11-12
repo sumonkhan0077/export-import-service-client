@@ -5,8 +5,7 @@ import { toast } from "react-toastify";
 import { TbLogin2, TbLogout } from "react-icons/tb";
 import { MdAccountCircle } from "react-icons/md";
 import { HiHome } from "react-icons/hi";
-
-
+import { GiWorld } from "react-icons/gi";
 
 const Navbar = () => {
   const { user, logOut } = use(AuthContext);
@@ -34,15 +33,22 @@ const Navbar = () => {
       </li>
       <li>
         {" "}
-        <NavLink to="/my_import" className={`${
-            user ? " " : "text-gray-400 "
-          }`}>My Import</NavLink>
+        <NavLink to="/my_import" className={`${user ? " " : "text-gray-400 "}`}>
+          My Import
+        </NavLink>
       </li>
       <li>
         {" "}
-        <NavLink to="/my_products" className={`${
-            user ? " " : "text-gray-400 "
-          }`}>My Product</NavLink>
+        <NavLink
+          to="/my_products"
+          className={`${user ? " " : "text-gray-400 "}`}
+        >
+          My Product
+        </NavLink>
+      </li>
+        <li>
+        {" "}
+        <NavLink to="/about-us">About Us</NavLink>
       </li>
       {/* <li>
         {" "}
@@ -83,23 +89,30 @@ const Navbar = () => {
             {items}
           </ul>
         </div>
-        <Link to="/">Export Import Zone</Link>
+        <Link className="flex gap-2 items-center" to="/">
+          <span className="text-primary text-3xl">
+            <GiWorld />
+          </span>{" "}
+          <span className=" text-primary text-xl font-bold">
+            Trade<span className="">Sphere</span>{" "}
+          </span>{" "}
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="gap-3 menu-horizontal px-1">{items}</ul>
       </div>
       <div className="navbar-end gap-3">
         <Link to="/">
-            {user && user.photoURL ? (
-              <img
-                src={user.photoURL}
-                alt="User"
-                className="w-10 h-10 rounded-full object-cover border-2 border-blue-500"
-              />
-            ) : (
-              <MdAccountCircle className="text-4xl text-gray-600" />
-            )}
-          </Link>
+          {user && user.photoURL ? (
+            <img
+              src={user.photoURL}
+              alt="User"
+              className="w-10 h-10 rounded-full object-cover border-2 border-blue-500"
+            />
+          ) : (
+            <MdAccountCircle className="text-4xl text-gray-600" />
+          )}
+        </Link>
         {user ? (
           <button onClick={handelLogOut} className="btn my-btn">
             Logout

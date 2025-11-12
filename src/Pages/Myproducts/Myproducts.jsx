@@ -13,6 +13,10 @@ const MyProducts = () => {
   const [myProductsAll, setMyProductsAll] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const handleProductAdded = (newProduct) => {
+  setMyProductsAll((prev) => [...prev, newProduct]);
+};
+
   useEffect(() => {
     if (user?.email) {
       setLoading(true);
@@ -63,9 +67,9 @@ const MyProducts = () => {
   return (
     <div className="max-w-[1100px] mx-auto mt-30">
       <div className="flex justify-between mt-4">
-        <h1 className="text-2xl font-semibold mb-4">My Products</h1>
+        <h1 className="text-2xl font-semibold mb-4">My Products ({myProductsAll.length})</h1>
         <div>
-          <PostProduct></PostProduct>
+          <PostProduct handleProductAdded={handleProductAdded}></PostProduct>
         </div>
       </div>
 
@@ -76,7 +80,7 @@ const MyProducts = () => {
             <thead className="bg-gradient-to-b from-[#6a64dd] to-[#3c9dda] text-white">
               <tr>
                 <th className="text-center">#</th>
-                <th className="text-center">Product Name</th>
+                <th className="">Product Name</th>
                 <th className="text-center">Rating</th>
                 <th className="text-center">Quantity</th>
                 <th className="text-center">Price</th>
@@ -95,7 +99,7 @@ const MyProducts = () => {
                     className="hover:bg-blue-50 transition duration-200"
                   >
                     <td className="text-center">{index + 1}</td>
-                    <td className="flex items-center justify-center ">
+                    <td className=" ">
                       <div className="flex items-center gap-3">
                         <div className="avatar">
                           <div className="mask mask-squircle h-12 w-12">

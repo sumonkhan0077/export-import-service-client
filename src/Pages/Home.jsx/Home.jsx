@@ -16,7 +16,6 @@ import Spinner from "../../Components/Spinner/Spinner";
 import { MdNavigateNext } from "react-icons/md";
 import { Link } from "react-router";
 
-
 const Home = () => {
   const [latestProducts, setLatestProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -37,7 +36,7 @@ const Home = () => {
   // console.log(latestProducts);
 
   return (
-    <div className="relative mt-20 ">
+    <div className=" mt-20 ">
       <div className="w-full max-w-8xl mx-auto mt-6">
         <Swiper
           pagination={{ dynamicBullets: true }}
@@ -106,15 +105,6 @@ const Home = () => {
           </SwiperSlide>
         </Swiper>
       </div>
-      <div className="absolute ml-8 md:ml-35 lg:ml-78 lg:mt-8">
-        <h1 className="font-bold text-4xl md:text-5xl text-center mt-20  mb-4">
-          We Bridge Distances, We <br /> Deliver Dreams
-        </h1>
-        <p className="text-center pb-40">
-          A EIZ is a software system that helps companies manage <br />{" "}
-          logistics associated with the movement of physical of goods.
-        </p>
-      </div>
 
       <div className="flex flex-col justify-center items-center bg-gradient-to-b from-[#6a64dd] to-[#3c9dda] mt-55">
         <svg
@@ -125,12 +115,12 @@ const Home = () => {
           <path d="M0,224L120,224C240,224,480,224,720,213.3C960,203,1200,181,1320,170.7L1440,160L1440,0L1320,0C1200,0,960,0,720,0C480,0,240,0,120,0L0,0Z"></path>
         </svg>
 
-        <div className="text-center mb-10 mt-20  px-4 sm:px-6 md:px-10">
+        <div className="relative text-center  max-w-[1150px] mx-auto mb-10 mt-20  px-4 sm:px-6 md:px-10">
           <h2 className="text-white text-2xl sm:text-3xl md:text-5xl font-bold mt-[-60px] sm:mt-[-80px] md:mt-[-100px]">
             WHY CHOOSE US?
           </h2>
 
-          <p className="text-[#ffffffb9] max-w-[1050px] mx-auto text-base sm:text-lg md:text-xl mt-4 sm:mt-5 leading-relaxed">
+          <p className="text-[#ffffffb9]  text-base sm:text-lg md:text-xl mt-4 sm:mt-5 leading-relaxed">
             We simplify global trade for everyone. From exporters to importers —
             manage your products, track shipments, and stay connected with
             verified global partners. Secure, fast, and designed to help your
@@ -140,6 +130,16 @@ const Home = () => {
           <p className="text-white mt-3 text-base sm:text-lg md:text-xl md:ml-20 lg:ml-160">
             — Your success is our priority.
           </p>
+
+          <div className="absolute ml-8 mt-[-550px] md:ml-1 lg:ml-20 lg:mt-[-630px]">
+            <h1 className="font-bold text-4xl md:text-5xl text-center mt-20  bg-gradient-to-b from-[#6a64dd] to-[#3c9dda] bg-clip-text text-transparent  mb-4">
+              We Bridge Distances, We Deliver Dreams
+            </h1>
+            <p className="text-center pb-40">
+              A EIZ is a software system that helps companies manage <br />{" "}
+              logistics associated with the movement of physical of goods.
+            </p>
+          </div>
         </div>
 
         <div>
@@ -148,8 +148,8 @@ const Home = () => {
               <div className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center hover:shadow-xl transition">
                 <img
                   src={img1}
-                  alt="Programming"
-                  className="w-60 h-55 mb-4 transition-transform duration-300 transform hover:scale-105"
+                  alt="Trustworthy & Secure"
+                  className="w-60 h-55 mb-4 transition-transform duration-300 transform hover:scale-105 hover:border-[#000000] "
                 />
                 <h3 className="text-xl font-medium text-gray-800">
                   Trustworthy & Secure
@@ -159,7 +159,7 @@ const Home = () => {
               <div className="bg-white rounded-lg shadow-md p-8 flex flex-col items-center hover:shadow-xl transition transform scale-105 md:scale-115">
                 <img
                   src={img2}
-                  alt="Programming"
+                  alt=" Live Tracking"
                   className="w-60 mb-4 transition-transform duration-300 transform hover:scale-105"
                 />
                 <h3 className="text-xl font-medium text-gray-800">
@@ -170,7 +170,7 @@ const Home = () => {
               <div className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center hover:shadow-xl transition">
                 <img
                   src={img3}
-                  alt="Programming"
+                  alt="Fast & Safe Transportation"
                   className="w-60 h-55 mb-4 transition-transform duration-300 transform hover:scale-105"
                 />
                 <h3 className="text-xl font-medium text-gray-800 text-center">
@@ -191,30 +191,87 @@ const Home = () => {
 
       {/* product by latest */}
       <div>
-         <h1 className="text-center text-4xl font-bold mt-5 mb-10">
-          Latest Products
+        <h1 className="bg-gradient-to-b from-[#6a64dd] to-[#3c9dda] bg-clip-text text-transparent text-center text-4xl font-bold mt-5 mb-10">
+          Our Latest Products
         </h1>
 
-        <div className="max-w-[1100px] mx-auto grid grid-cols-1  md:grid-cols-2  lg:grid-cols-3 gap-6 mb-8">
-          {loading ? 
-          (<Spinner></Spinner>) :
-       ( latestProducts.map((latestProduct) => (
-            <LatesProducts
-              key={latestProduct._id}
-              latestProduct={latestProduct}
-            ></LatesProducts>)
-          ))}
-           <div className="flex justify-center mx-auto items-center">
-          <Link to='/all_products' className="hover:scale-105 transition ease-in-out btn my-btn py-5 px-6 mt-2 mr-25 lg:ml-125 flex items-center">
-            {" "}
-            <span className="text-2xl text-[#ffff]">
-              <MdNavigateNext />
-            </span>{" "}
-            <p>See All</p>
-          </Link>
-        </div>
+        <div className="max-w-[1200px] mx-auto grid grid-cols-1  md:grid-cols-2  lg:grid-cols-3 gap-6 mb-8">
+          {loading ? (
+            <Spinner></Spinner>
+          ) : (
+            latestProducts.map((latestProduct) => (
+              <LatesProducts
+                key={latestProduct._id}
+                latestProduct={latestProduct}
+              ></LatesProducts>
+            ))
+          )}
+          <div className="flex justify-center mx-auto items-center">
+            <Link
+              to="/all_products"
+              className="hover:scale-105 transition ease-in-out btn my-btn py-5 px-6 mt-2 mr-25 lg:ml-125 flex items-center"
+            >
+              {" "}
+              <span className="text-2xl text-[#ffff]">
+                <MdNavigateNext />
+              </span>{" "}
+              <p>See All</p>
+            </Link>
+          </div>
         </div>
       </div>
+      {/* transport system */}
+      <section class="py-16 mt-20 mb-20 max-w-[1200px] mx-auto rounded-2xl bg-black/90 backdrop-blur-sm">
+        <div class="max-w-6xl mx-auto px-6 text-center ">
+          <h2 class="text-3xl md:text-4xl font-bold mb-12 bg-gradient-to-b from-[#6a64dd] to-[#3c9dda] bg-clip-text text-transparent">
+            Our Modes Of Transportation
+          </h2>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="flex flex-col items-center border border-gray-700 bg-white/5 rounded-xl p-6 hover:border-[#3c9dda] transition-all duration-300">
+              <div class="text-5xl mb-4 text-[#6a64dd]">🚚</div>
+              <h3 class="text-lg font-semibold text-white mb-2">
+                Road Transport
+              </h3>
+              <p class="text-gray-400 text-sm leading-relaxed">
+                We ensure reliable and cost-effective road transport solutions
+                for domestic and cross-border deliveries.
+              </p>
+            </div>
+
+            <div class="flex flex-col items-center border border-gray-700 bg-white/5 rounded-xl p-6 hover:border-[#3c9dda] transition-all duration-300">
+              <div class="text-5xl mb-4 text-[#6a64dd]">🚆</div>
+              <h3 class="text-lg font-semibold text-white mb-2">
+                Railway Logistics
+              </h3>
+              <p class="text-gray-400 text-sm leading-relaxed">
+                Our railway network provides is fast, secure, and
+                environmentally friendly — perfect for large-scale cargo.
+              </p>
+            </div>
+
+            <div class="flex flex-col items-center border border-gray-700 bg-white/5 rounded-xl p-6 hover:border-[#3c9dda] transition-all duration-300">
+              <div class="text-5xl mb-4 text-[#6a64dd]">🚢</div>
+              <h3 class="text-lg font-semibold text-white mb-2">Sea Freight</h3>
+              <p class="text-gray-400 text-sm leading-relaxed">
+                We offer global sea freight services with competitive rates and
+                flexible scheduling.
+              </p>
+            </div>
+
+            <div class="flex flex-col items-center border border-gray-700 bg-white/5 rounded-xl p-6 hover:border-[#3c9dda] transition-all duration-300">
+              <div class="text-5xl mb-4 text-[#6a64dd]">✈️</div>
+              <h3 class="text-lg font-semibold text-white mb-2">Air Freight</h3>
+              <p class="text-gray-400 text-sm leading-relaxed">
+                For urgent and high-value shipments, our air freight service
+                provides the fastest international delivery.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    
     </div>
   );
 };

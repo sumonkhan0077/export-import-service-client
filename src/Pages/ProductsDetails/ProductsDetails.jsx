@@ -91,7 +91,7 @@ const ProductsDetails = () => {
     <div className="max-w-[1100px] mx-auto">
       <div className="max-w-[1100px] mx-auto hero bg-base-200 mt-20 ">
         <div className="hero-content flex-col lg:flex-row">
-          <img src={product.product_image} />
+          <img className="h-100 w-100 object-contain" src={product.product_image} />
           <div>
             <h1 className="text-5xl font-bold">{product.product_name}</h1>
             <p className="py-6">{product.description}</p>

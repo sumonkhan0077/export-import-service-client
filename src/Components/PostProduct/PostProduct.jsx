@@ -2,7 +2,7 @@ import React, { useContext, useRef, useState } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
 import Swal from "sweetalert2";
 
-const PostProductModal = () => {
+const PostProductModal = ({ handleProductAdded }) => {
   const { user } = useContext(AuthContext);
   const [ratingError, setRatingError] = useState(false);
   const [quantityError, setQuantityError] = useState(false);
@@ -52,6 +52,8 @@ const PostProductModal = () => {
       .then((data) => {
         console.log(data);
         if (data.insertedId) {
+          const addedProduct = { _id: data.insertedId, ...newProduct };
+          handleProductAdded(addedProduct);
           Swal.fire({
             icon: "success",
             title: "Product Added!",

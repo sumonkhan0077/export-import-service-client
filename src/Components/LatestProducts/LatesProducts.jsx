@@ -6,9 +6,10 @@ const LatesProducts = ({ latestProduct }) => {
   // console.log(product_name , latestProduct);
   return (
     <div>
-      <div className="mt-7 card bg-base-100 w-85 mx-auto shadow-sm transition-transform duration-300 transform hover:scale-105">
-        <figure>
+      <div className="mt-7 card bg-base-100 w-85 h-100 mx-auto shadow-sm transition-transform duration-300 transform hover:scale-105">
+        <figure className="">
           <img
+          className="w-full h-full object-contain "
             src={product_image}
             alt={product_name}
           />

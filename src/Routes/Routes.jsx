@@ -10,6 +10,7 @@ import MyImport from "../Pages/MyImport/MyImport";
 import MyProducts from "../Pages/Myproducts/Myproducts";
 import PrivetRoute from "../Context/PrivetRoute";
 import ErrorElement from "../Pages/ErrorElement/ErrorElemet";
+import AboutUs from "../Pages/AboutUs/AboutUs";
 
 const router = createBrowserRouter([
   {
@@ -43,7 +44,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/product_details/:id",
-        element: <ProductsDetails />,
+        element: (
+          <PrivetRoute>
+            <ProductsDetails />
+          </PrivetRoute>
+        ),
         loader: async ({ params }) => {
           const res = await fetch(
             `http://localhost:3000/products/${params.id}`
@@ -58,6 +63,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/about-us",
+        element: <AboutUs></AboutUs>,
       },
     ],
   },
