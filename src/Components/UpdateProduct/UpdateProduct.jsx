@@ -38,7 +38,7 @@ const UpdateProduct = ({ item }) => {
     };
 
     try {
-      const res = await fetch(`http://localhost:3000/products/${item._id}`, {
+      const res = await fetch(`https://export-import-sever.vercel.app/products/${item._id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatedProduct),

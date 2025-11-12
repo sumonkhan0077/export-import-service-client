@@ -60,7 +60,7 @@ const ProductsDetails = () => {
     }
 
     serError(false);
-    fetch("http://localhost:3000/myImport", {
+    fetch("https://export-import-sever.vercel.app/myImport", {
       method: "POST",
       headers: {
         "content-type": "application/json",

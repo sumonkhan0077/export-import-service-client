@@ -20,7 +20,7 @@ const MyProducts = () => {
   useEffect(() => {
     if (user?.email) {
       setLoading(true);
-      fetch(`http://localhost:3000/products?email=${user.email}`)
+      fetch(`https://export-import-sever.vercel.app/products?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => setMyProductsAll(data));
       setLoading(false);
@@ -38,7 +38,7 @@ const MyProducts = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/products/${_id}`, {
+        fetch(`https://export-import-sever.vercel.app/products/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

@@ -70,7 +70,7 @@ const Register = () => {
           password:password
            
         }
-        fetch('http://localhost:3000/users' , {
+        fetch('https://export-import-sever.vercel.app/users' , {
           method: 'POST',
           headers: {
             'content-type': 'application/json'
@@ -101,7 +101,7 @@ const Register = () => {
           image: result.user.photoURL,
           password: 'google login'
         }
-        fetch('http://localhost:3000/users' , {
+        fetch('https://export-import-sever.vercel.app/users' , {
           method: 'POST',
           headers: {
             'content-type': 'application/json'

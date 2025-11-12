@@ -11,7 +11,7 @@ const AllProducts = () => {
   // console.log(Products);
 
   useEffect(() => {
-    fetch("http://localhost:3000/products")
+    fetch("https://export-import-sever.vercel.app/products")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);

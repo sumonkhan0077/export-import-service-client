@@ -51,7 +51,7 @@ const router = createBrowserRouter([
         ),
         loader: async ({ params }) => {
           const res = await fetch(
-            `http://localhost:3000/products/${params.id}`
+            `https://export-import-sever.vercel.app/products/${params.id}`
           );
           return res.json();
         },

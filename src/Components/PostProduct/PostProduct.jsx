@@ -50,7 +50,7 @@ const PostProductModal = ({ handleProductAdded }) => {
     setRatingError(false);
     setQuantityError(false);
 
-    fetch("http://localhost:3000/products", {
+    fetch("https://export-import-sever.vercel.app/products", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(newProduct),

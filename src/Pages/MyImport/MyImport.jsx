@@ -12,7 +12,7 @@ const MyImport = () => {
   useEffect(() => {
     if (user?.email) {
       setLoading(true);
-      fetch(`http://localhost:3000/myImport?email=${user.email}`)
+      fetch(`https://export-import-sever.vercel.app/myImport?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => {
           setMyImports(data);
@@ -37,7 +37,7 @@ const MyImport = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/myImport/${_id}`, {
+        fetch(`https://export-import-sever.vercel.app/myImport/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
