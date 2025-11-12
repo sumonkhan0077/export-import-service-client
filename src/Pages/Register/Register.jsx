@@ -60,7 +60,7 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         //  console.log(result.user)
-        setUser(result.user);
+        setUser({ ...result.user, displayName: name, photoURL: photo });
          toast.success(" User Create Account successful");
          navigate(`${location.state ? location.state : "/"}`);
           const newUser = {

@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useRef, useState, useEffect } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
 import Swal from "sweetalert2";
 
@@ -8,15 +8,24 @@ const PostProductModal = ({ handleProductAdded }) => {
   const [quantityError, setQuantityError] = useState(false);
   const importModal = useRef(null);
 
+  // Dark mode state
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") || "light"
+  );
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
   const handelModal = () => {
     importModal.current.showModal();
   };
 
   const handleAddProduct = (e) => {
     e.preventDefault();
-
     const form = e.target;
-    console.log(form.available_quantity.value);
+
     const newProduct = {
       product_image: form.product_image.value,
       product_name: form.product_name.value,
@@ -31,10 +40,7 @@ const PostProductModal = ({ handleProductAdded }) => {
       time: new Date().toISOString(),
     };
 
-    if (form.rating.value < 0) {
-      return setRatingError(true);
-    }
-    if (form.rating.value > 6) {
+    if (form.rating.value < 0 || form.rating.value > 5) {
       return setRatingError(true);
     }
     if (form.available_quantity.value <= 0) {
@@ -43,6 +49,7 @@ const PostProductModal = ({ handleProductAdded }) => {
 
     setRatingError(false);
     setQuantityError(false);
+
     fetch("http://localhost:3000/products", {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -50,7 +57,6 @@ const PostProductModal = ({ handleProductAdded }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.insertedId) {
           const addedProduct = { _id: data.insertedId, ...newProduct };
           handleProductAdded(addedProduct);
@@ -84,8 +90,11 @@ const PostProductModal = ({ handleProductAdded }) => {
       </button>
 
       {/* Modal */}
-      <dialog ref={importModal} className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box bg-white text-gray-800 max-w-xl">
+      <dialog
+        ref={importModal}
+        className="modal modal-bottom sm:modal-middle"
+      >
+        <div className="modal-box bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 max-w-xl">
           <h3 className="font-bold text-2xl text-blue-600 mb-4">
             Add New Product
           </h3>
@@ -96,7 +105,7 @@ const PostProductModal = ({ handleProductAdded }) => {
               type="text"
               name="product_image"
               placeholder="Product Image URL"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               required
             />
             <label className="label">Product Name</label>
@@ -104,101 +113,106 @@ const PostProductModal = ({ handleProductAdded }) => {
               type="text"
               name="product_name"
               placeholder="Product Name"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               required
             />
-            <label className="label">price</label>
+            <label className="label">Price</label>
             <input
               type="number"
               name="price"
               placeholder="Price (USD)"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               required
             />
-            <label className="label">Origin Country </label>
+            <label className="label">Origin Country</label>
             <input
               type="text"
               name="origin_country"
               placeholder="Origin Country"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               required
             />
             <div className="flex gap-3">
-              <label className="label">Rating</label>
-              <input
-                type="number"
-                step="0.1"
-                name="rating"
-                placeholder="Rating (e.g. 4.5)"
-                className="input input-bordered w-1/2"
-                required
-              />
-              <label className="label">Rating Number</label>
-              <input
-                type="number"
-                name="rating_number"
-                placeholder="Rating Count"
-                className="input input-bordered w-1/2"
-                required
-              />
+              <div className="w-1/2">
+                <label className="label">Rating</label>
+                <input
+                  type="number"
+                  step="0.1"
+                  name="rating"
+                  placeholder="Rating (e.g. 4.5)"
+                  className="input input-bordered w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+                  required
+                />
+              </div>
+              <div className="w-1/2">
+                <label className="label">Rating Number</label>
+                <input
+                  type="number"
+                  name="rating_number"
+                  placeholder="Rating Count"
+                  className="input input-bordered w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+                  required
+                />
+              </div>
             </div>
             <label className="label">Available Quantity</label>
             <input
               type="number"
               name="available_quantity"
               placeholder="Available Quantity"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               required
             />
             <label className="label">Description</label>
             <textarea
               name="description"
               placeholder="Description"
-              className="textarea textarea-bordered w-full"
+              className="textarea textarea-bordered w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               required
             ></textarea>
-            <label className="label">Email</label>
+            <label className="label">Exporter Name</label>
             <input
               type="text"
               name="exporter_name"
               placeholder="Exporter Name"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               required
             />
-
+            <label className="label">Exporter Email</label>
             <input
               type="email"
               name="exporter_email"
               placeholder="Exporter Email"
               defaultValue={user?.email || ""}
-              className="input input-bordered w-full"
+              className="input input-bordered w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               required
               readOnly={!!user?.email}
             />
 
-            <div className="modal-action">
-              <button type="submit" className="btn bg-blue-600 text-white">
+            <div className="modal-action flex justify-between">
+              <button
+                type="submit"
+                className="btn bg-blue-600 text-white hover:bg-blue-700"
+              >
                 Submit
               </button>
               <form method="dialog">
-                {/* if there is a button in form, it will close the modal */}
-                <button className="btn text-white bg-secondary ">Close</button>
+                <button className="btn bg-secondary text-white hover:bg-secondary-focus">
+                  Close
+                </button>
               </form>
             </div>
           </form>
-          {ratingError ? (
+
+          {ratingError && (
             <h1 className="text-red-500 text-center mt-4">
-              "Sorry, the rating number is 1 to 5 ."
+              Sorry, the rating number is 1 to 5.
             </h1>
-          ) : (
-            " "
           )}
-          {quantityError ? (
+          {quantityError && (
             <h1 className="text-red-500 text-center mt-4">
-              Sorry, the quantity minimum number is 1 .
+              Sorry, the quantity minimum number is 1.
             </h1>
-          ) : (
-            " "
           )}
         </div>
       </dialog>

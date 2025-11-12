@@ -11,6 +11,7 @@ const Navbar = () => {
   const { user, logOut } = use(AuthContext);
   const [isCheck , setIsCheck] = useState(false)
   const [theme , setTheme] = useState(localStorage.getItem('theme') || "light")
+  // console.log(user)
 
 
   useEffect(() => {
@@ -26,7 +27,7 @@ const Navbar = () => {
     setTheme(newCheck ? "dark" : "light");
     return newCheck;
   });
-    console.log(isCheck)
+    // console.log(isCheck)
   }
 
   const handelLogOut = () => {

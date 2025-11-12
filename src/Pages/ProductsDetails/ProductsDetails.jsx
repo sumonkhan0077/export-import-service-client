@@ -88,10 +88,10 @@ const ProductsDetails = () => {
       });
   };
   return (
-    <div className="max-w-[1100px] mx-auto">
-      <div className="max-w-[1100px] mx-auto hero bg-base-200 mt-20 ">
-        <div className="hero-content flex-col lg:flex-row">
-          <img className="h-100 w-100 object-contain" src={product.product_image} />
+    <div className="max-w-[1100px] mx-auto mt-30 mb-20">
+      <div className="max-w-[1200px] mx-auto hero  bg-gradient-to-r from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 rounded-2xl mt-20 ">
+        <div className="hero-content flex-col lg:flex-row gap-6 ">
+          <img className="h-100 w-100 object-contain rounded-2xl" src={product.product_image} />
           <div>
             <h1 className="text-5xl font-bold">{product.product_name}</h1>
             <p className="py-6">{product.description}</p>

@@ -70,7 +70,7 @@ const MyImport = () => {
       </h1>
 
 
-      <div className="overflow-x-auto  bg-white shadow-md rounded-lg">
+      <div className="overflow-x-auto   bg-gradient-to-r from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 max-w-[1200px] mx-auto shadow-md rounded-lg mt-5 mb-10">
         {myImports.length > 0 ? (
           <table className="table w-full">
             {/* Table Head */}
@@ -93,9 +93,9 @@ const MyImport = () => {
                 myImports.map((item, index) => (
                   <tr
                     key={item._id}
-                    className="hover:bg-blue-50 transition duration-200"
+                    className="hover:bg-[#cccccc] dark:hover:bg-[#909090d8] transition duration-200"
                   >
-                    <td className="text-black">{index + 1}</td>
+                    <td className="text-black dark:text-[#e6e6e6]">{index + 1}</td>
                     <td>
                       <div className="flex items-center gap-3">
                         <div className="avatar">
@@ -104,15 +104,15 @@ const MyImport = () => {
                           </div>
                         </div>
                         <div>
-                          <div className="font-bold text-black">{item.product_name}</div>
-                          <div className="text-sm text-black opacity-70">
+                          <div className="font-bold dark:text-[#e6e6e6] text-black">{item.product_name}</div>
+                          <div className="text-sm dark:text-[#e6e6e6] text-black opacity-70">
                             {item.origin_country}
                           </div>
                         </div>
                       </div>
                     </td>
                     <td className="text-yellow-500">{item.rating}</td>
-                    <td className="text-black">{item.quantity}</td>
+                    <td className="text-black dark:text-[#e6e6e6]">{item.quantity}</td>
                     <td className="text-primary">${item.price}</td>
                     <td className=" items-center">               
                         <Link 

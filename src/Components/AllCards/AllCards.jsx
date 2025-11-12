@@ -14,9 +14,13 @@ const AllCards = ({product}) => {
   } = product;
   return (
     <div>
-      <div className="mt-7 card bg-base-100 w-85 h-100 mx-auto shadow-sm transition-transform duration-300 transform hover:scale-105">
-        <figure>
-          <img src={product_image} alt={product_name} />
+      <div className="mt-7 card  bg-gradient-to-r from-base-100 to-base-100 dark:from-gray-900 dark:to-blue-900 max-w-[1200px] mx-auto shadow-md rounded-lg  mb-10 w-85 h-100 transition-transform duration-300 transform hover:scale-105">
+        <figure className="bg-white w-full flex justify-center items-center h-60 md:h-72 lg:h-80">
+          <img
+            className="max-h-full w-auto object-contain"
+            src={product_image}
+            alt={product_name}
+          />
         </figure>
         <div className="card-body">
           <h2 className="card-title text-2xl">{product_name}</h2>
