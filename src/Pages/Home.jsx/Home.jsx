@@ -271,7 +271,92 @@ const Home = () => {
         </div>
       </section>
 
-    
+      {/* service  */}
+      <section class="py-16 max-w-[1200px] mx-auto mb-8">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+          <h2 class="text-3xl md:text-4xl font-medium mb-2 bg-gradient-to-b from-[#6a64dd] to-[#3c9dda] bg-clip-text text-transparent">OUR SERVICE PROCESS</h2>
+          <p class=" mb-12">
+           We follow a transparent and efficient process to ensure your goods are
+      delivered safely, <br /> quickly, and cost-effectively — from booking to delivery.
+          </p>
+
+          <div class="flex flex-col md:flex-row justify-between items-center relative">
+            <div class="hidden md:hidden lg:block absolute top-14 left-35 w-40 h-[2px] bg-blue-500 -z-10"></div>
+
+            <div class="relative flex flex-col items-center mb-10 md:mb-0">
+              <div class="w-28 h-28 rounded-full border-2 border-primary flex items-center justify-center bg-white">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/992/992700.png"
+                  class="w-12 opacity-80"
+                  alt=""
+                />
+              </div>
+
+              <div class="absolute left-23 top-10 bg-primary text-white w-9 h-9 flex items-center justify-center rounded-full font-bold">
+                1
+              </div>
+              <p class="text-sm font-semibold mt-3 text-gray-700 uppercase">
+                Request A Quote
+              </p>
+            </div>
+
+            <div class=" hidden md:hidden lg:block  absolute top-14 left-120 w-40 h-[2px] bg-blue-500 -z-10"></div>
+
+            <div class="relative flex flex-col items-center mb-10 md:mb-0">
+              <div class="w-28 h-28 rounded-full border-2 border-primary flex items-center justify-center bg-white">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/992/992700.png"
+                  class="w-12 opacity-80"
+                  alt=""
+                />
+              </div>
+
+              <div class="absolute left-28 top-10 bg-primary text-white w-9 h-9 flex items-center justify-center rounded-full font-bold">
+                2
+              </div>
+              <p class="text-sm font-semibold mt-3 text-gray-700 uppercase">
+                Book Your Shipment
+              </p>
+            </div>
+
+            <div class="relative flex flex-col items-center mb-10 md:mb-0">
+              <div class="w-28 h-28 rounded-full border-2 border-primary flex items-center justify-center bg-white">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/992/992700.png"
+                  class="w-12 opacity-80"
+                  alt=""
+                />
+              </div>
+
+              <div class="hidden md:hidden lg:block  absolute top-14 left-36 w-40 h-[2px] bg-blue-500 -z-10"></div>
+
+              <div class="absolute left-23 top-10 bg-primary text-white w-9 h-9 flex items-center justify-center rounded-full font-bold">
+                3
+              </div>
+              <p class="text-sm font-semibold mt-3 text-gray-700 uppercase">
+                 Track & Manage
+              </p>
+            </div>
+
+            <div class="relative flex flex-col items-center mb-10 md:mb-0">
+              <div class="w-28 h-28 rounded-full border-2 border-primary flex items-center justify-center bg-white">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/992/992700.png"
+                  class="w-12 opacity-80"
+                  alt=""
+                />
+              </div>
+
+              <div class="absolute left-23 top-10 bg-primary text-white w-9 h-9 flex items-center justify-center rounded-full font-bold">
+                4
+              </div>
+              <p class="text-sm font-semibold mt-3 text-gray-700 uppercase">
+                Fast Delivery
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
