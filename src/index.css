@@ -17,7 +17,7 @@
 
 
 li a.active{
-  @apply underline decoration-[#665eff]
+  @apply underline decoration-[#665eff] text-[#665eff]
 }
 
  .my-btn {

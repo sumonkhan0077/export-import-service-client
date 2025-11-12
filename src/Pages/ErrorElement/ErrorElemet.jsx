@@ -7,7 +7,7 @@ const ErrorElement = () => {
   return (
     <div>
       <title>404-error</title>
-      <div className="flex  mt-12 max-w-[1280px] mx-auto p-8  flex-col items-center justify-center h-screen bg-gradient-to-b from-[#beb4ff] to-[#76b6ff]">
+      <div className="flex max-w-[1280px] mx-auto p-8  flex-col items-center justify-center h-screen bg-gradient-to-b from-[#beb4ff] to-[#76b6ff]">
      
         <motion.h1
           initial={{ scale: 0.5, opacity: 0 }}

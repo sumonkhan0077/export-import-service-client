@@ -1,9 +1,11 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
 import Swal from "sweetalert2";
 
 const PostProductModal = () => {
   const { user } = useContext(AuthContext);
+  const [ratingError, setRatingError] = useState(false);
+  const [quantityError, setQuantityError] = useState(false);
   const importModal = useRef(null);
 
   const handelModal = () => {
@@ -29,6 +31,18 @@ const PostProductModal = () => {
       time: new Date().toISOString(),
     };
 
+    if (form.rating.value < 0) {
+      return setRatingError(true);
+    }
+    if (form.rating.value > 6) {
+      return setRatingError(true);
+    }
+    if (form.available_quantity.value <= 0) {
+      return setQuantityError(true);
+    }
+
+    setRatingError(false);
+    setQuantityError(false);
     fetch("http://localhost:3000/products", {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -58,7 +72,7 @@ const PostProductModal = () => {
   };
 
   return (
-    <div className="text-center">
+    <div className="">
       {/* Open Modal Button */}
       <button
         className="btn bg-primary text-white hover:bg-blue-700"
@@ -75,6 +89,7 @@ const PostProductModal = () => {
           </h3>
 
           <form onSubmit={handleAddProduct} className="space-y-3">
+            <label className="label">Product Image</label>
             <input
               type="text"
               name="product_image"
@@ -82,6 +97,7 @@ const PostProductModal = () => {
               className="input input-bordered w-full"
               required
             />
+            <label className="label">Product Name</label>
             <input
               type="text"
               name="product_name"
@@ -89,6 +105,7 @@ const PostProductModal = () => {
               className="input input-bordered w-full"
               required
             />
+            <label className="label">price</label>
             <input
               type="number"
               name="price"
@@ -96,6 +113,7 @@ const PostProductModal = () => {
               className="input input-bordered w-full"
               required
             />
+            <label className="label">Origin Country </label>
             <input
               type="text"
               name="origin_country"
@@ -104,6 +122,7 @@ const PostProductModal = () => {
               required
             />
             <div className="flex gap-3">
+              <label className="label">Rating</label>
               <input
                 type="number"
                 step="0.1"
@@ -112,6 +131,7 @@ const PostProductModal = () => {
                 className="input input-bordered w-1/2"
                 required
               />
+              <label className="label">Rating Number</label>
               <input
                 type="number"
                 name="rating_number"
@@ -120,6 +140,7 @@ const PostProductModal = () => {
                 required
               />
             </div>
+            <label className="label">Available Quantity</label>
             <input
               type="number"
               name="available_quantity"
@@ -127,13 +148,14 @@ const PostProductModal = () => {
               className="input input-bordered w-full"
               required
             />
+            <label className="label">Description</label>
             <textarea
               name="description"
               placeholder="Description"
               className="textarea textarea-bordered w-full"
               required
             ></textarea>
-
+            <label className="label">Email</label>
             <input
               type="text"
               name="exporter_name"
@@ -162,6 +184,20 @@ const PostProductModal = () => {
               </form>
             </div>
           </form>
+          {ratingError ? (
+            <h1 className="text-red-500 text-center mt-4">
+              "Sorry, the rating number is 1 to 5 ."
+            </h1>
+          ) : (
+            " "
+          )}
+          {quantityError ? (
+            <h1 className="text-red-500 text-center mt-4">
+              Sorry, the quantity minimum number is 1 .
+            </h1>
+          ) : (
+            " "
+          )}
         </div>
       </dialog>
     </div>

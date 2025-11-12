@@ -43,12 +43,13 @@ const router = createBrowserRouter([
       },
       {
         path: "/product_details/:id",
-        loader:  ({ params }) =>  fetch( `http://localhost:3000/products/${params.id}`),
-        element: (
-          <PrivetRoute>
-            <ProductsDetails></ProductsDetails>
-          </PrivetRoute>
-        ),
+        element: <ProductsDetails />,
+        loader: async ({ params }) => {
+          const res = await fetch(
+            `http://localhost:3000/products/${params.id}`
+          );
+          return res.json();
+        },
       },
       {
         path: "/login",

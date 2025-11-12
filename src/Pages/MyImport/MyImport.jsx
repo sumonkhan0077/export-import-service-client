@@ -9,16 +9,21 @@ const MyImport = () => {
   const { user } = useContext(AuthContext);
   const [myImports, setMyImports] = useState([]);
   const [loading, setLoading] = useState(true);
-
-
   useEffect(() => {
     if (user?.email) {
       setLoading(true);
       fetch(`http://localhost:3000/myImport?email=${user.email}`)
         .then((res) => res.json())
-        .then((data) => setMyImports(data));
-      setLoading(false);
-    }
+        .then((data) => {
+          setMyImports(data);
+        
+          setLoading(false); 
+        })
+        .catch((error) => {
+          console.error("Fetch error:", error);
+          setLoading(false); 
+        });
+    } 
   }, [user?.email]);
 
   const handelRemoverProduct = (_id) => {
@@ -64,8 +69,8 @@ const MyImport = () => {
         My Imported Products ({myImports.length})
       </h1>
 
-      {/* Responsive Table Wrapper */}
-      <div className="overflow-x-auto bg-white shadow-md rounded-lg">
+
+      <div className="overflow-x-auto  bg-white shadow-md rounded-lg">
         {myImports.length > 0 ? (
           <table className="table w-full">
             {/* Table Head */}
@@ -109,9 +114,9 @@ const MyImport = () => {
                     <td className="text-yellow-500">{item.rating}</td>
                     <td>{item.quantity}</td>
                     <td className="text-primary">${item.price}</td>
-                    <td className=" items-center">
-                      <Link
-                        to={`/product_details/${item._id}`}
+                    <td className=" items-center">               
+                        <Link 
+                        to={`/product_details/${item.product_id}`}
                         className="btn my-btn btn-xs mr-2"
                       >
                         Details

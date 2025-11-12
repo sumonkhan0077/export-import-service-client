@@ -4,6 +4,9 @@ import { AuthContext } from "../../Context/AuthProvider";
 import { toast } from "react-toastify";
 import { TbLogin2, TbLogout } from "react-icons/tb";
 import { MdAccountCircle } from "react-icons/md";
+import { HiHome } from "react-icons/hi";
+
+
 
 const Navbar = () => {
   const { user, logOut } = use(AuthContext);
@@ -31,11 +34,15 @@ const Navbar = () => {
       </li>
       <li>
         {" "}
-        <NavLink to="/my_import">My Import</NavLink>
+        <NavLink to="/my_import" className={`${
+            user ? " " : "text-gray-400 "
+          }`}>My Import</NavLink>
       </li>
       <li>
         {" "}
-        <NavLink to="/my_products">My Product</NavLink>
+        <NavLink to="/my_products" className={`${
+            user ? " " : "text-gray-400 "
+          }`}>My Product</NavLink>
       </li>
       {/* <li>
         {" "}

@@ -1,4 +1,4 @@
-import React, { use, useEffect, useRef, useState, } from "react";
+import React, { use, useEffect, useRef, useState } from "react";
 import { useLoaderData, useNavigate } from "react-router";
 import { AuthContext } from "../../Context/AuthProvider";
 import Swal from "sweetalert2";
@@ -6,29 +6,28 @@ import { TiArrowBack } from "react-icons/ti";
 import AppNotFound from "../../Components/AppNotFound/AppNotFound";
 import Spinner from "../../Components/Spinner/Spinner";
 
-
 const ProductsDetails = () => {
   const { user } = use(AuthContext);
   const product = useLoaderData();
   const navigate = useNavigate();
   const importModal = useRef(null);
-   const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
+  const [error, serError] = useState(false);
+  const [productData, setProductData] = useState(product);
 
   // console.log(product);
-    useEffect(() => {
+  useEffect(() => {
     if (product) {
-       setLoading(false); // half second delay for nice UX
+      setLoading(false); // half second delay for nice UX
     }
   }, [product]);
 
-  // ✅ যদি invalid ID দেওয়া হয় (product না পাওয়া যায়)
   if (!product || !product._id) {
     return <AppNotFound />;
   }
 
-    if (loading) {
-    return <Spinner></Spinner>
-     ;
+  if (loading) {
+    return <Spinner></Spinner>;
   }
 
   const handelModal = () => {
@@ -42,17 +41,25 @@ const ProductsDetails = () => {
     const quantity = e.target.quantity.value;
     console.log(name, email, quantity, product._id);
     const newImport = {
+      product_id: product._id,
       product_name: product.product_name,
       product_image: product.product_image,
       price: product.price,
       origin_country: product.origin_country,
       rating: product.rating,
-
       buyer_name: name,
       buyer_email: email,
       quantity: quantity,
     };
 
+    if (quantity > product.available_quantity) {
+      return serError(true);
+    }
+    if (quantity <= 0) {
+      return serError(true);
+    }
+
+    serError(false);
     fetch("http://localhost:3000/myImport", {
       method: "POST",
       headers: {
@@ -62,7 +69,7 @@ const ProductsDetails = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("after import products", data);
+        // console.log("after import products", data);
         if (data.insertedId) {
           importModal.current.close();
           Swal.fire({
@@ -72,6 +79,11 @@ const ProductsDetails = () => {
             showConfirmButton: false,
             timer: 1500,
           });
+          setProductData((prev) => ({
+            ...prev,
+            available_quantity: prev.available_quantity - parseInt(quantity),
+          }));
+          e.target.reset();
         }
       });
   };
@@ -95,14 +107,14 @@ const ProductsDetails = () => {
                 {product.origin_country}
               </div>
               <div className="badge bg-[#665eff58] text-[#6c64ff]">
-                Available: {product.available_quantity}
+                Rating Number: {product.rating_number}
               </div>
               <div className="badge bg-[#665eff58] text-[#6c64ff]  ">
                 {" "}
                 Rating: {product.rating}
               </div>
             </div>
-            <h1 className="mb-4">Rating Number: {product.rating_number}</h1>
+            <h1 className="mb-4"> Available: {productData.available_quantity} </h1>
             <div>
               <button onClick={handelModal} className="btn my-btn">
                 Import Now
@@ -162,6 +174,16 @@ const ProductsDetails = () => {
                       </button>
                     </form>
                   </div>
+                  {error ? (
+                    <h1 className="text-red-500 text-center mt-4">
+                      “"Sorry, the maximum quantity is{" "}
+                      {product.available_quantity} and the minimum is 1. Please
+                      select a quantity between 1 and{" "}
+                      {product.available_quantity}."
+                    </h1>
+                  ) : (
+                    " "
+                  )}
                 </div>
               </dialog>
               <button
