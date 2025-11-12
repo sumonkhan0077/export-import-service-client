@@ -6,8 +6,7 @@ const AboutUs = () => {
   return (
     <div>
       <section
-        data-aos="fade-down"
-        className="mt-15 py-10 bg-gradient-to-r from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 max-w-[1200px] mx-auto"
+        className="mt-25 rounded-2xl py-10 bg-gradient-to-r from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 max-w-[1200px] mx-auto"
       >
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12 px-6">
           <div className="h-70 w-110">

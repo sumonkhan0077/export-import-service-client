@@ -1,4 +1,4 @@
-import React, { use } from "react";
+import React, { use, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../../Context/AuthProvider";
 import { toast } from "react-toastify";
@@ -9,6 +9,25 @@ import { GiWorld } from "react-icons/gi";
 
 const Navbar = () => {
   const { user, logOut } = use(AuthContext);
+  const [isCheck , setIsCheck] = useState(false)
+  const [theme , setTheme] = useState(localStorage.getItem('theme') || "light")
+
+
+  useEffect(() => {
+    const html = document.querySelector('html')
+    html.setAttribute("data-theme", theme)
+    localStorage.setItem('theme' , theme)
+      setIsCheck(theme === "dark");
+  }, [theme])
+
+   const handelDarkLight = () => {
+    setIsCheck(prev => {
+    const newCheck = !prev;
+    setTheme(newCheck ? "dark" : "light");
+    return newCheck;
+  });
+    console.log(isCheck)
+  }
 
   const handelLogOut = () => {
     logOut()
@@ -21,6 +40,8 @@ const Navbar = () => {
         toast.error("Something went wrong while logging out");
       });
   };
+
+ 
   const items = (
     <>
       <li>
@@ -46,7 +67,7 @@ const Navbar = () => {
           My Product
         </NavLink>
       </li>
-        <li>
+      <li>
         {" "}
         <NavLink to="/about-us">About Us</NavLink>
       </li>
@@ -102,6 +123,14 @@ const Navbar = () => {
         <ul className="gap-3 menu-horizontal px-1">{items}</ul>
       </div>
       <div className="navbar-end gap-3">
+        <div>
+          <input
+            type="checkbox"
+            checked={isCheck}
+            onChange={handelDarkLight}
+            className="toggle border-indigo-600 bg-indigo-500 checked:border-black checked:bg-black checked:bg-black"
+          />
+        </div>
         <Link to="/">
           {user && user.photoURL ? (
             <img

@@ -95,7 +95,7 @@ const MyImport = () => {
                     key={item._id}
                     className="hover:bg-blue-50 transition duration-200"
                   >
-                    <td>{index + 1}</td>
+                    <td className="text-black">{index + 1}</td>
                     <td>
                       <div className="flex items-center gap-3">
                         <div className="avatar">
@@ -104,15 +104,15 @@ const MyImport = () => {
                           </div>
                         </div>
                         <div>
-                          <div className="font-bold">{item.product_name}</div>
-                          <div className="text-sm opacity-70">
+                          <div className="font-bold text-black">{item.product_name}</div>
+                          <div className="text-sm text-black opacity-70">
                             {item.origin_country}
                           </div>
                         </div>
                       </div>
                     </td>
                     <td className="text-yellow-500">{item.rating}</td>
-                    <td>{item.quantity}</td>
+                    <td className="text-black">{item.quantity}</td>
                     <td className="text-primary">${item.price}</td>
                     <td className=" items-center">               
                         <Link 

@@ -98,7 +98,7 @@ const MyProducts = () => {
                     key={item._id}
                     className="hover:bg-blue-50 transition duration-200"
                   >
-                    <td className="text-center">{index + 1}</td>
+                    <td className="text-center text-black">{index + 1}</td>
                     <td className=" ">
                       <div className="flex items-center gap-3">
                         <div className="avatar">
@@ -107,8 +107,8 @@ const MyProducts = () => {
                           </div>
                         </div>
                         <div>
-                          <div className="font-bold">{item.product_name}</div>
-                          <div className="text-sm opacity-70">
+                          <div className="font-bold text-black">{item.product_name}</div>
+                          <div className="text-sm text-black opacity-70">
                             {item.origin_country}
                           </div>
                         </div>
@@ -117,7 +117,7 @@ const MyProducts = () => {
                     <td className="text-yellow-500 text-center">
                       {item.rating}
                     </td>
-                    <td className="text-center">{item.available_quantity}</td>
+                    <td className="text-center text-black">{item.available_quantity}</td>
                     <td className="text-primary text-center">${item.price}</td>
                     <td className="flex items-center ">
                       <Link
