@@ -7,6 +7,7 @@ import { Link } from "react-router";
 import Swal from "sweetalert2";
 import UpdateProduct from "../../Components/UpdateProduct/UpdateProduct";
 import { TiArrowBack } from "react-icons/ti";
+import Papa from "papaparse";
 
 const MyProducts = () => {
   const { user } = use(AuthContext);
@@ -60,6 +61,22 @@ const MyProducts = () => {
       }
     });
   };
+
+  const downloadCSV = () => {
+  if (myProductsAll.length === 0) return;
+
+  const csv = Papa.unparse(myProductsAll, {
+    columns: ["product_name", "price", "available_quantity", "rating", "origin_country"],
+  });
+
+  const blob = new Blob([csv], { type: "text/csv" });
+  const url = window.URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "my_products.csv";
+  a.click();
+};
   if (loading) {
     return <Spinner></Spinner>;
   }
@@ -158,6 +175,15 @@ const MyProducts = () => {
           </div>
         )}
       </div>
+      <div className="flex justify-end mb-6 mt-4">
+  <button
+    onClick={downloadCSV}
+    className="btn my-btn "
+  >
+    Download CSV
+  </button>
+</div>
+
     </div>
   );
 };
