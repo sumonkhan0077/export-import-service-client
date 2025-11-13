@@ -72,7 +72,7 @@ const Navbar = () => {
         {" "}
         <NavLink to="/about-us">About Us</NavLink>
       </li>
-      <div data-aos="fade-right">
+      <div data-aos="fade-right" className="lg:ml-95">
           <input
             type="checkbox"
             checked={isCheck}
