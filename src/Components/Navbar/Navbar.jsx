@@ -45,30 +45,30 @@ const Navbar = () => {
  
   const items = (
     <>
-      <li>
+      <li data-aos="fade-right">
         {" "}
         <NavLink to="/">Home</NavLink>
       </li>
-      <li>
+      <li data-aos="fade-right">
         {" "}
         <NavLink to="/all_products">All Products</NavLink>
       </li>
-      <li>
+      <li data-aos="fade-right">
         {" "}
-        <NavLink to="/my_import" className={`${user ? " " : "text-gray-400 "}`}>
+        <NavLink to="/my_import" className={`${user ? " " : "text-gray-400 cursor-not-allowed "}`}>
           My Import
         </NavLink>
       </li>
-      <li>
+      <li data-aos="fade-right">
         {" "}
         <NavLink
           to="/my_products"
-          className={`${user ? " " : "text-gray-400 "}`}
+          className={`${user ? " " : "text-gray-400 cursor-not-allowed "}`}
         >
           My Product
         </NavLink>
       </li>
-      <li>
+      <li data-aos="fade-right">
         {" "}
         <NavLink to="/about-us">About Us</NavLink>
       </li>
@@ -111,7 +111,7 @@ const Navbar = () => {
             {items}
           </ul>
         </div>
-        <Link className="flex gap-2 items-center" to="/">
+        <Link data-aos="fade-right" className="flex gap-2 items-center" to="/">
           <span className="text-primary text-3xl">
             <GiWorld />
           </span>{" "}
@@ -124,7 +124,7 @@ const Navbar = () => {
         <ul className="gap-3 menu-horizontal px-1">{items}</ul>
       </div>
       <div className="navbar-end gap-3">
-        <div>
+        <div data-aos="fade-right">
           <input
             type="checkbox"
             checked={isCheck}
@@ -132,7 +132,7 @@ const Navbar = () => {
             className="toggle border-indigo-600 bg-indigo-500 checked:border-black checked:bg-black checked:bg-black"
           />
         </div>
-        <Link to="/">
+        <Link data-aos="fade-right" to="/">
           {user && user.photoURL ? (
             <img
               src={user.photoURL}
@@ -144,12 +144,12 @@ const Navbar = () => {
           )}
         </Link>
         {user ? (
-          <button onClick={handelLogOut} className="btn my-btn">
+          <button data-aos="fade-right" onClick={handelLogOut} className="btn my-btn">
             Logout
             <TbLogout className="text-2xl" />
           </button>
         ) : (
-          <Link to="/login">
+          <Link data-aos="fade-right" to="/login">
             <p className="btn my-btn">
               <TbLogin2 className="text-2xl" /> Login
             </p>

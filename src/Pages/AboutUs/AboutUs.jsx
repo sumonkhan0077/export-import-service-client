@@ -5,11 +5,12 @@ import photo from "../../assets/pexels-tima-miroshnichenko-6169668.jpg";
 const AboutUs = () => {
   return (
     <div>
+      <title>About Us</title>
       <section
         className="mt-25 rounded-2xl py-10 bg-gradient-to-r from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 max-w-[1200px] mx-auto"
       >
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12 px-6">
-          <div className="h-70 w-110">
+          <div data-aos="fade-up" className="h-70 w-110">
             <img className="rounded-2xl" src={photo} />
           </div>
 
@@ -55,49 +56,49 @@ const AboutUs = () => {
           </div>
         </div>
       </section>
-
-      <section class="py-16 mt-10 mb-20 max-w-[1200px] mx-auto rounded-2xl bg-black/90 backdrop-blur-sm">
+{/* transport system */}
+      <section data-aos="fade-up" class="py-16 mt-20 mb-20 max-w-[1200px] mx-auto rounded-2xl bg-black/90 backdrop-blur-sm">
         <div class="max-w-6xl mx-auto px-6 text-center ">
-          <h2 class="text-3xl md:text-4xl font-bold mb-12 bg-gradient-to-b from-[#6a64dd] to-[#3c9dda] bg-clip-text text-transparent">
+          <h2  data-aos="slide-right"  class="text-3xl md:text-4xl font-bold mb-12 bg-gradient-to-b from-[#6a64dd] to-[#3c9dda] bg-clip-text text-transparent">
             Our Modes Of Transportation
           </h2>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div class="flex flex-col items-center border border-gray-700 bg-white/5 rounded-xl p-6 hover:border-[#3c9dda] transition-all duration-300">
-              <div class="text-5xl mb-4 text-[#6a64dd]">🚚</div>
-              <h3 class="text-lg font-semibold text-white mb-2">
+            <div  data-aos="flip-up" class="flex flex-col items-center border border-gray-700 bg-white/5 rounded-xl p-6 hover:border-[#3c9dda] transition-all duration-300">
+              <div data-aos="fade-left"  class="text-5xl mb-4 text-[#6a64dd]">🚚</div>
+              <h3 data-aos="fade-left"  class="text-lg font-semibold text-white mb-2">
                 Road Transport
               </h3>
-              <p class="text-gray-400 text-sm leading-relaxed">
+              <p data-aos="fade-up"  class="text-gray-400 text-sm leading-relaxed">
                 We ensure reliable and cost-effective road transport solutions
                 for domestic and cross-border deliveries.
               </p>
             </div>
 
-            <div class="flex flex-col items-center border border-gray-700 bg-white/5 rounded-xl p-6 hover:border-[#3c9dda] transition-all duration-300">
-              <div class="text-5xl mb-4 text-[#6a64dd]">🚆</div>
-              <h3 class="text-lg font-semibold text-white mb-2">
+            <div data-aos="flip-up"  class="flex flex-col items-center border border-gray-700 bg-white/5 rounded-xl p-6 hover:border-[#3c9dda] transition-all duration-300">
+              <div data-aos="fade-left" class="text-5xl mb-4 text-[#6a64dd]">🚆</div>
+              <h3 data-aos="fade-left" class="text-lg font-semibold text-white mb-2">
                 Railway Logistics
               </h3>
-              <p class="text-gray-400 text-sm leading-relaxed">
+              <p data-aos="fade-up" class="text-gray-400 text-sm leading-relaxed">
                 Our railway network provides is fast, secure, and
                 environmentally friendly — perfect for large-scale cargo.
               </p>
             </div>
 
-            <div class="flex flex-col items-center border border-gray-700 bg-white/5 rounded-xl p-6 hover:border-[#3c9dda] transition-all duration-300">
-              <div class="text-5xl mb-4 text-[#6a64dd]">🚢</div>
-              <h3 class="text-lg font-semibold text-white mb-2">Sea Freight</h3>
-              <p class="text-gray-400 text-sm leading-relaxed">
+            <div data-aos="flip-up"  class="flex flex-col items-center border border-gray-700 bg-white/5 rounded-xl p-6 hover:border-[#3c9dda] transition-all duration-300">
+              <div data-aos="fade-left" class="text-5xl mb-4 text-[#6a64dd]">🚢</div>
+              <h3 data-aos="fade-left" class="text-lg font-semibold text-white mb-2">Sea Freight</h3>
+              <p data-aos="fade-up" class="text-gray-400 text-sm leading-relaxed">
                 We offer global sea freight services with competitive rates and
                 flexible scheduling.
               </p>
             </div>
 
-            <div class="flex flex-col items-center border border-gray-700 bg-white/5 rounded-xl p-6 hover:border-[#3c9dda] transition-all duration-300">
-              <div class="text-5xl mb-4 text-[#6a64dd]">✈️</div>
-              <h3 class="text-lg font-semibold text-white mb-2">Air Freight</h3>
-              <p class="text-gray-400 text-sm leading-relaxed">
+            <div data-aos="flip-up"  class="flex flex-col items-center border border-gray-700 bg-white/5 rounded-xl p-6 hover:border-[#3c9dda] transition-all duration-300">
+              <div data-aos="fade-left" class="text-5xl mb-4 text-[#6a64dd]">✈️</div>
+              <h3 data-aos="fade-left" class="text-lg font-semibold text-white mb-2">Air Freight</h3>
+              <p data-aos="fade-up" class="text-gray-400 text-sm leading-relaxed">
                 For urgent and high-value shipments, our air freight service
                 provides the fastest international delivery.
               </p>
@@ -106,16 +107,19 @@ const AboutUs = () => {
         </div>
       </section>
 
-      {/* service  */}
+       {/* service  */}
       <section class="py-16 max-w-[1200px] mx-auto mb-8">
         <div class="max-w-6xl mx-auto px-6 text-center">
-          <h2 class="text-3xl md:text-4xl font-medium mb-2 bg-gradient-to-b from-[#6a64dd] to-[#3c9dda] bg-clip-text text-transparent">OUR SERVICE PROCESS</h2>
-          <p class=" mb-12">
-           We follow a transparent and efficient process to ensure your goods are
-      delivered safely, <br /> quickly, and cost-effectively — from booking to delivery.
+          <h2 data-aos="fade-left" class="text-3xl md:text-4xl font-medium mb-2 bg-gradient-to-b from-[#6a64dd] to-[#3c9dda] bg-clip-text text-transparent">
+            OUR SERVICE PROCESS
+          </h2>
+          <p data-aos="fade-right" class=" mb-12">
+            We follow a transparent and efficient process to ensure your goods
+            are delivered safely, <br /> quickly, and cost-effectively — from
+            booking to delivery.
           </p>
 
-          <div class="flex flex-col md:flex-row justify-between items-center relative">
+          <div data-aos="flip-up" class="flex flex-col md:flex-row justify-between items-center relative">
             <div class="hidden md:hidden lg:block absolute top-14 left-35 w-40 h-[2px] bg-blue-500 -z-10"></div>
 
             <div class="relative flex flex-col items-center mb-10 md:mb-0">
@@ -130,7 +134,7 @@ const AboutUs = () => {
               <div class="absolute left-23 top-10 bg-primary text-white w-9 h-9 flex items-center justify-center rounded-full font-bold">
                 1
               </div>
-              <p class="text-sm font-semibold mt-3 text-gray-700 uppercase">
+              <p data-aos="fade-up" class="text-sm font-semibold mt-3 text-gray-700 uppercase">
                 Request A Quote
               </p>
             </div>
@@ -149,7 +153,7 @@ const AboutUs = () => {
               <div class="absolute left-28 top-10 bg-primary text-white w-9 h-9 flex items-center justify-center rounded-full font-bold">
                 2
               </div>
-              <p class="text-sm font-semibold mt-3 text-gray-700 uppercase">
+              <p data-aos="fade-up" class="text-sm font-semibold mt-3 text-gray-700 uppercase">
                 Book Your Shipment
               </p>
             </div>
@@ -168,8 +172,8 @@ const AboutUs = () => {
               <div class="absolute left-23 top-10 bg-primary text-white w-9 h-9 flex items-center justify-center rounded-full font-bold">
                 3
               </div>
-              <p class="text-sm font-semibold mt-3 text-gray-700 uppercase">
-                 Track & Manage
+              <p data-aos="fade-up" class="text-sm font-semibold mt-3 text-gray-700 uppercase">
+                Track & Manage
               </p>
             </div>
 
@@ -185,7 +189,7 @@ const AboutUs = () => {
               <div class="absolute left-23 top-10 bg-primary text-white w-9 h-9 flex items-center justify-center rounded-full font-bold">
                 4
               </div>
-              <p class="text-sm font-semibold mt-3 text-gray-700 uppercase">
+              <p data-aos="fade-up" class="text-sm font-semibold mt-3 text-gray-700 uppercase">
                 Fast Delivery
               </p>
             </div>

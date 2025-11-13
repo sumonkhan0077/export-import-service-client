@@ -66,9 +66,10 @@ const MyProducts = () => {
 
   return (
     <div className="max-w-[1100px] mx-auto mt-30">
+      <title>My Products</title>
       <div className="flex justify-between mt-4">
-        <h1 className="text-2xl font-semibold mb-4">My Products ({myProductsAll.length})</h1>
-        <div>
+        <h1 data-aos="flip-up" className="text-2xl font-semibold mb-4">My Products ({myProductsAll.length})</h1>
+        <div data-aos="flip-up">
           <PostProduct handleProductAdded={handleProductAdded}></PostProduct>
         </div>
       </div>
@@ -76,30 +77,31 @@ const MyProducts = () => {
       <div className="overflow-x-auto   bg-gradient-to-r from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 max-w-[1200px] mx-auto shadow-md rounded-lg mt-5 mb-10">
         
         {myProductsAll.length > 0 ? (
-          <table className="table w-full">
+          <table  className="table w-full">
             {/* Table Head */}
-            <thead className="bg-gradient-to-b from-[#6a64dd] to-[#3c9dda] text-white">
+            <thead data-aos="fade-right" className="bg-gradient-to-b from-[#6a64dd] to-[#3c9dda] text-white">
               <tr>
-                <th className="text-center">#</th>
-                <th className="">Product Name</th>
-                <th className="text-center">Rating</th>
-                <th className="text-center">Quantity</th>
-                <th className="text-center">Price</th>
-                <th className="">Actions</th>
+                <th data-aos="fade-right" className="text-center">#</th>
+                <th data-aos="fade-right" className="">Product Name</th>
+                <th data-aos="fade-right" className="text-center">Rating</th>
+                <th data-aos="fade-right" className="text-center">Quantity</th>
+                <th data-aos="fade-right" className="text-center">Price</th>
+                <th data-aos="fade-right" className="">Actions</th>
               </tr>
             </thead>
 
             {/* Table Body */}
-            <tbody>
+            <tbody data-aos="fade-left" >
               {loading ? (
                 <Spinner></Spinner>
               ) : (
                 myProductsAll.map((item, index) => (
                   <tr
+                  
                     key={item._id}
                     className="dark:hover:bg-[#909090d8] hover:bg-[#cccccc]  transition duration-200"
                   >
-                    <td className="text-center dark:text-[#e6e6e6] text-black">{index + 1}</td>
+                    <td  className="text-center dark:text-[#e6e6e6] text-black">{index + 1}</td>
                     <td className=" ">
                       <div className="flex items-center gap-3">
                         <div className="avatar">
@@ -109,31 +111,33 @@ const MyProducts = () => {
                         </div>
                         <div>
                           <div className="font-bold dark:text-[#e6e6e6] text-black">{item.product_name}</div>
-                          <div className="text-sm dark:text-[#e6e6e6] text-black opacity-70">
+                          <div  className="text-sm dark:text-[#e6e6e6] text-black opacity-70">
                             {item.origin_country}
                           </div>
                         </div>
                       </div>
                     </td>
-                    <td className="text-yellow-500 text-center">
+                    <td  className="text-yellow-500 text-center">
                       {item.rating}
                     </td>
-                    <td className="text-center dark:text-[#e6e6e6] text-black">{item.available_quantity}</td>
-                    <td className="text-primary text-center">${item.price}</td>
-                    <td className="flex items-center ">
+                    <td  className="text-center dark:text-[#e6e6e6] text-black">{item.available_quantity}</td>
+                    <td  className="text-primary text-center">${item.price}</td>
+                    <td  className="flex items-center ">
                       <Link
+                      data-aos="flip-up"
                         to={`/product_details/${item._id}`}
                         className="btn my-btn btn-xs mr-2"
                       >
                         Details
                       </Link>
                       <button
+                      data-aos="flip-up"
                         onClick={() => handelRemoverProduct(item._id)}
                         className="btn btn-secondary mr-2 hover:bg-white hover:text-red-500 hover btn-xs "
                       >
                         Remove
                       </button>
-                      <div>
+                      <div data-aos="flip-up">
                         <UpdateProduct item={item}></UpdateProduct>
                       </div>
                     </td>
@@ -143,7 +147,7 @@ const MyProducts = () => {
             </tbody>
           </table>
         ) : (
-          <div className="p-4 h-[30vh] text-center text-gray-500">
+          <div data-aos="flip-up" className="p-4 h-[30vh] text-center text-gray-500">
            <h2> No products found </h2>
             <Link to="/all_products" className="btn my-btn mt-5 px-8 ">
               <span>

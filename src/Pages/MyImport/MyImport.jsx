@@ -65,7 +65,8 @@ const MyImport = () => {
 
   return (
     <div className="max-w-[1100px] mx-auto  mt-20 mb-20  p-4">
-      <h1 className="text-2xl font-semibold mb-4">
+      <title>My Import</title>
+      <h1 data-aos="flip-up" className="text-2xl font-semibold mb-4">
         My Imported Products ({myImports.length})
       </h1>
 
@@ -74,7 +75,7 @@ const MyImport = () => {
         {myImports.length > 0 ? (
           <table className="table w-full">
             {/* Table Head */}
-            <thead className="bg-gradient-to-b from-[#6a64dd] to-[#3c9dda] text-white">
+            <thead data-aos="fade-right"  className="bg-gradient-to-b from-[#6a64dd] to-[#3c9dda] text-white">
               <tr>
                 <th>#</th>
                 <th>Product Name</th>
@@ -86,7 +87,7 @@ const MyImport = () => {
             </thead>
 
             {/* Table Body */}
-            <tbody>
+            <tbody data-aos="fade-left" >
               {loading ? (
                 <Spinner></Spinner>
               ) : (

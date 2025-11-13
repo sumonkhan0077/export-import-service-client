@@ -120,7 +120,8 @@ const Register = () => {
   };
   return (
     <div>
-      <div className="hero bg-base-200 min-h-screen mt-20">
+      <div data-aos="flip-up" className="hero bg-base-200 min-h-screen mt-20">
+        <title>Register</title>
         <div className="hero-content flex-col ">
           <div className="text-center lg:text-left">
             <h1 className="text-5xl font-bold">Register now!</h1>

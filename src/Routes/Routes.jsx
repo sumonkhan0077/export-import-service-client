@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router";
 import MainLayout from "../Layouts/MainLayout";
-import Home from "../Pages/Home.jsx/Home";
+
 import AllProducts from "../Pages/AllProducts/AllProducts";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
@@ -11,6 +11,7 @@ import MyProducts from "../Pages/Myproducts/Myproducts";
 import PrivetRoute from "../Context/PrivetRoute";
 import ErrorElement from "../Pages/ErrorElement/ErrorElemet";
 import AboutUs from "../Pages/AboutUs/AboutUs";
+import Home from "../Pages/Home/Home";
 
 const router = createBrowserRouter([
   {
@@ -50,10 +51,19 @@ const router = createBrowserRouter([
           </PrivetRoute>
         ),
         loader: async ({ params }) => {
-          const res = await fetch(
-            `https://export-import-sever.vercel.app/products/${params.id}`
-          );
-          return res.json();
+          try {
+            const res = await fetch(
+              `https://export-import-sever.vercel.app/products/${params.id}`
+            );
+            if (!res.ok) {
+              return null;
+            }
+            const data = await res.json();
+            return data;
+          } 
+          catch (error) {
+            return null;
+          }
         },
       },
       {

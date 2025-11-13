@@ -89,34 +89,35 @@ const ProductsDetails = () => {
   };
   return (
     <div className="max-w-[1100px] mx-auto mt-30 mb-20">
+      <title>{product.product_name}</title>
       <div className="max-w-[1200px] mx-auto hero  bg-gradient-to-r from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 rounded-2xl mt-20 ">
         <div className="hero-content flex-col lg:flex-row gap-6 ">
-          <img className="h-100 w-100 object-contain rounded-2xl" src={product.product_image} />
+          <img  data-aos="fade-up" className="h-100 w-100 object-contain rounded-2xl" src={product.product_image} />
           <div>
-            <h1 className="text-5xl font-bold">{product.product_name}</h1>
-            <p className="py-6">{product.description}</p>
+            <h1  data-aos="fade-left" className="text-5xl font-bold">{product.product_name}</h1>
+            <p  data-aos="fade-right" className="py-6">{product.description}</p>
 
             <div className="mb-3 ">
-              <h1 className="text-xl font-medium text-[#6c64ff]">
+              <h1  data-aos="fade-up" className="text-xl font-medium text-[#6c64ff]">
                 Price: ${product.price}
               </h1>
-              <h1>Exporter Name: {product.exporter_name}</h1>
+              <h1  data-aos="fade-up">Exporter Name: {product.exporter_name}</h1>
             </div>
             <div className="flex  gap-3 mb-2">
-              <div className="badge  bg-[#665eff58] text-[#6c64ff]">
+              <div  data-aos="fade-up" className="badge  bg-[#665eff58] text-[#6c64ff]">
                 {product.origin_country}
               </div>
-              <div className="badge bg-[#665eff58] text-[#6c64ff]">
+              <div  data-aos="fade-up" className="badge bg-[#665eff58] text-[#6c64ff]">
                 Rating Number: {product.rating_number}
               </div>
-              <div className="badge bg-[#665eff58] text-[#6c64ff]  ">
+              <div  data-aos="fade-up" className="badge bg-[#665eff58] text-[#6c64ff]  ">
                 {" "}
                 Rating: {product.rating}
               </div>
             </div>
-            <h1 className="mb-4"> Available: {productData.available_quantity} </h1>
-            <div>
-              <button onClick={handelModal} className="btn my-btn">
+            <h1  data-aos="fade-up" className="mb-4"> Available: {productData.available_quantity} </h1>
+            <div >
+              <button   onClick={handelModal} className="btn my-btn">
                 Import Now
               </button>
               {/* Open the modal using document.getElementById('ID').showModal() method */}

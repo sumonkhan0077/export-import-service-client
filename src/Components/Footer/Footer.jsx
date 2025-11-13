@@ -17,8 +17,8 @@ const Footer = () => {
         <path d="M0,160L120,144C240,128,480,96,720,90.7C960,85,1200,107,1320,117.3L1440,128L1440,0L1320,0C1200,0,960,0,720,0C480,0,240,0,120,0L0,0Z"></path>
       </svg>
       <div className="-mt-50 pt-15 bg-gradient-to-b from-[#6a64dd] to-[#3c9dda]">
-        <footer className=" footer sm:footer-horizontal text-base-content pl-40 p-10 ">
-          <aside>
+        <footer  className=" footer sm:footer-horizontal text-base-content pl-40 p-10 ">
+          <aside data-aos="fade-left">
             <Link className="flex gap-2 items-center" to="/">
               <span className="text-white text-3xl">
                 <GiWorld />
@@ -47,28 +47,28 @@ const Footer = () => {
               </a>
             </div>
           </aside>
-          <nav>
+          <nav data-aos="fade-left">
             <h6 className="footer-title text-white">Services</h6>
             <a className="link link-hover text-white">Branding</a>
             <a className="link link-hover text-white">Design</a>
             <a className="link link-hover text-white">Marketing</a>
             <a className="link link-hover text-white">Advertisement</a>
           </nav>
-          <nav>
+          <nav data-aos="fade-left">
             <h6 className="footer-title text-white">Company</h6>
             <a className="link link-hover text-white">About us</a>
             <a className="link link-hover text-white">Contact</a>
             <a className="link link-hover text-white">Jobs</a>
             <a className="link link-hover text-white">Press kit</a>
           </nav>
-          <nav>
+          <nav data-aos="fade-left">
             <h6 className="footer-title text-white">Legal</h6>
             <a className="link link-hover text-white">Terms of use</a>
             <a className="link link-hover text-white">Privacy policy</a>
             <a className="link link-hover text-white">Cookie policy</a>
           </nav>
         </footer>
-        <aside className="text-center text-white pb-2">
+        <aside  className="text-center text-white pb-2">
           <p>
             Copyright © {new Date().getFullYear()} - All right reserved by
             TradeSphere

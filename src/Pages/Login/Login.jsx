@@ -51,7 +51,8 @@ const Login = () => {
 
   return (
     <div>
-      <div className="hero bg-base-200 mt-20  min-h-[82vh]">
+      <title>Login</title>
+      <div data-aos="flip-up" className="hero bg-base-200 mt-20  min-h-[82vh]">
         <div className="hero-content  ">
           <div className="card bg-base-100 w-100 max-w-sm shrink-0 shadow-2xl">
             <div className="card-body">

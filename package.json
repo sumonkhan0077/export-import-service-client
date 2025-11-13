@@ -12,6 +12,7 @@
   "dependencies": {
     "@lordicon/react": "^1.11.0",
     "@tailwindcss/vite": "^4.1.17",
+    "aos": "^2.3.4",
     "firebase": "^12.5.0",
     "framer-motion": "^12.23.24",
     "lottie-react": "^2.4.1",

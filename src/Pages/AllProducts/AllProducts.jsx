@@ -46,20 +46,21 @@ const AllProducts = () => {
 
   return (
     <div className="max-w-[1100px] mx-auto mt-20">
+    <title>All Products</title>
       <div className="mt-25 ">
-        <h2 className="font-bold bg-gradient-to-b text-center from-[#6a64dd] to-[#3c9dda] bg-clip-text text-transparent text-3xl">
+        <h2 data-aos="fade-right" className="font-bold bg-gradient-to-b text-center from-[#6a64dd] to-[#3c9dda] bg-clip-text text-transparent text-3xl">
           {" "}
           DISCOVER WHAT YOU’VE BEEN LOOKING FOR
         </h2>
-        <p className="text-[#535353db] text-center mt-2">
+        <p data-aos="fade-left" className="text-[#535353db] text-center mt-2">
           Discover our handpicked selection of premium products, <br /> updated
           regularly for your convenience.
         </p>
-        <hr className="max-w-[850px] mx-auto my-6 border-0 h-[2px] bg-gradient-to-r from-transparent via-[#006affe1] to-transparent" />
+        <hr data-aos="fade-up" className="max-w-[850px] mx-auto my-6 border-0 h-[2px] bg-gradient-to-r from-transparent via-[#006affe1] to-transparent" />
       </div>
       <div className="flex flex-col gap-4 mt-15 md:flex-row justify-between items-center">
-        <h1 className="font-bold  bg-gradient-to-b from-[#6a64dd] to-[#3c9dda] bg-clip-text text-transparent text-2xl mt-4">MOST POPULAR PRODUCTS</h1>
-        <div className="flex items-center w-96 bg-gray-50 border border-gray-200 rounded-lg p-1">
+        <h1 data-aos="flip-up" className="font-bold  bg-gradient-to-b from-[#6a64dd] to-[#3c9dda] bg-clip-text text-transparent text-2xl mt-4">MOST POPULAR PRODUCTS</h1>
+        <div data-aos="flip-up" className="flex items-center w-96 bg-gray-50 border border-gray-200 rounded-lg p-1">
           <input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
