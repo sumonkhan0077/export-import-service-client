@@ -72,6 +72,14 @@ const Navbar = () => {
         {" "}
         <NavLink to="/about-us">About Us</NavLink>
       </li>
+      <div data-aos="fade-right">
+          <input
+            type="checkbox"
+            checked={isCheck}
+            onChange={handelDarkLight}
+            className="toggle border-indigo-600 bg-indigo-500 checked:border-black checked:bg-black checked:bg-black"
+          />
+        </div>
       {/* <li>
         {" "}
         <NavLink to="/login">Logins</NavLink>
@@ -109,8 +117,10 @@ const Navbar = () => {
             className="gap-3 menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
             {items}
+            
           </ul>
         </div>
+        
         <Link data-aos="fade-right" className="flex gap-2 items-center" to="/">
           <span className="text-primary text-3xl">
             <GiWorld />
@@ -124,14 +134,7 @@ const Navbar = () => {
         <ul className="gap-3 menu-horizontal px-1">{items}</ul>
       </div>
       <div className="navbar-end gap-3">
-        <div data-aos="fade-right">
-          <input
-            type="checkbox"
-            checked={isCheck}
-            onChange={handelDarkLight}
-            className="toggle border-indigo-600 bg-indigo-500 checked:border-black checked:bg-black checked:bg-black"
-          />
-        </div>
+        
         <Link data-aos="fade-right" to="/">
           {user && user.photoURL ? (
             <img
